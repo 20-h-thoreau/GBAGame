@@ -63,7 +63,7 @@ static inline void waitforstart(){
 
 
 bool gameover=false;
-u32 xyout; //this is jsut used to get x y out of functions where it is stored together as one long
+u32 xyout; //this is jsut used to get x y out of functions where it is stored together as one long value
 
 
 int main(){
@@ -89,8 +89,8 @@ int main(){
 	
 	struct Ship Player;
 
-    Player.x=10000;
-    Player.y=10000;
+    Player.x=8000;
+    Player.y=8000;
     Player.speed=0x0100;
     Player.button=0xffff;
     Player.angle=0;
