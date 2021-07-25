@@ -4,8 +4,37 @@
 #include "defs.h"
 #include "Graphics.h"
 
+void deathanimation(bool playerhit, bool enemyhit,u16 playerx, u16 playery, u8 playerangle, u16 enemyx, u16 enemyy, u8 enemyangle){
+
+    for (u8 timer=0,animationcounter=0; animationcounter<4;++timer){
+        if (timer==0x0f){
+            timer=0;
+            ++animationcounter;
+        }
+        vsync();
+        OAM_CLEAR();
+        if (playerhit==false){
+            createship(playerx,playery,0,playerangle,true);
+        }
+        else{
+            createship(playerx,playery,0,(8+animationcounter),true);
+        }
+        
+        
+        if(enemyhit==false){
+            createship(enemyx,enemyy,33,enemyangle,false);
+        }
+        else{
+            createship(enemyx,enemyy,33,(8+animationcounter),true);//this can be changed to false once we fix the problem with the pallete generation
+        }
+    
+    }
+    
+}
+
 void gameoverscreen(void){
     
+
     bool startpressed=false;
     vu16 button=0xff;
     u8 timer=0;

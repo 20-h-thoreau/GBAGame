@@ -18,7 +18,8 @@ main.o: /Users/thoreaukilbourne/Desktop/GBA/Game/src/main.c \
  /Users/thoreaukilbourne/Desktop/GBA/Game/build/bullet_bin.h \
  /Users/thoreaukilbourne/Desktop/GBA/Game/build/playerpallete_bin.h \
  /Users/thoreaukilbourne/Desktop/GBA/Game/build/enemypallete_bin.h \
- /Users/thoreaukilbourne/Desktop/GBA/Game/build/font_bin.h
+ /Users/thoreaukilbourne/Desktop/GBA/Game/build/font_bin.h \
+ /Users/thoreaukilbourne/Desktop/GBA/Game/build/exsplosion_bin.h
 /Users/thoreaukilbourne/Desktop/GBA/Game/src/defs.h:
 /opt/devkitpro/libtonc/include/tonc_types.h:
 /opt/devkitpro/libtonc/include/tonc_oam.h:
@@ -39,3 +40,4 @@ main.o: /Users/thoreaukilbourne/Desktop/GBA/Game/src/main.c \
 /Users/thoreaukilbourne/Desktop/GBA/Game/build/playerpallete_bin.h:
 /Users/thoreaukilbourne/Desktop/GBA/Game/build/enemypallete_bin.h:
 /Users/thoreaukilbourne/Desktop/GBA/Game/build/font_bin.h:
+/Users/thoreaukilbourne/Desktop/GBA/Game/build/exsplosion_bin.h:

@@ -29,6 +29,7 @@
 #include "playerpallete_bin.h"
 #include "enemypallete_bin.h"
 #include "font_bin.h"
+#include "exsplosion_bin.h"
 
 #include "background.h"
 
@@ -80,6 +81,7 @@ int main(){
     //tonccpy(Mem_Obj_Palette[16],enemyPal,enemyPalLen);
     
     tonccpy(&Mem_Tile[4][4],bullet_bin,bullet_bin_size);
+	tonccpy(&Mem_Tile[4][5],exsplosion_bin,exsplosion_bin_size);
     
 	tonccpy (&Mem_Tile[4][0x20],font_bin,font_bin_size);
     struct ObjectAttribute SpriteAttribute={0b0010000000000000, 0b0000000000000000, 0b0000000010000000};
@@ -259,7 +261,7 @@ int main(){
 		
 		
 		
-		if ( (((ABS(Bullet.x-Enemy.x))<0x300  && (ABS(Bullet.y-Enemy.y))<0x300  )) && Player.bulletactive!=0){
+		if ( (((ABS(Bullet.x-Enemy.x))<0x800  && (ABS(Bullet.y-Enemy.y))<0x800  )) && Player.bulletactive!=0){
 			Enemy.hit=true;
 			gameover=true;
 			if ( (ABS(Player.x-Enemy.x))<0x800  && (ABS(Player.y-Enemy.y))<0x800  ){
@@ -270,6 +272,8 @@ int main(){
       
 		if ( (ABS(Player.x-Enemy.x))<0x400  && (ABS(Player.y-Enemy.y))<0x400  ){
 			gameover=true; //this ends the game in the event of a collision
+			Enemy.hit=true;
+			Player.hit=true;
 			}
 		
 		
@@ -335,7 +339,7 @@ int main(){
 
 	
 	
-	
+	deathanimation(Player.hit,Enemy.hit, Player.x,Player.y, Player.angle,Enemy.x,Enemy.y,Enemy.angle);
     gameoverscreen();
     SoftReset();
 	
