@@ -7,7 +7,7 @@
 #include "defs.h"
 
 extern u8 level;
-vu16 enemyai(u16 PlayerX, u16 PlayerY, u16 PlayerSpeed, u16 EnemyX, u16 EnemyY, u16 EnemySpeed, u8 EnemyAngle, u8 bulletactive){
+vu16 enemyai(u16 PlayerX, u16 PlayerY, u16 PlayerSpeed, u16 EnemyX, u16 EnemyY, u16 EnemySpeed, u8 EnemyAngle, u8 bulletactive, u8 PlayerAngle){
     vu16 button=0xffff;
     u8 requiredangle=0;
     s16 XDiference=PlayerX-EnemyX;
@@ -34,6 +34,9 @@ vu16 enemyai(u16 PlayerX, u16 PlayerY, u16 PlayerSpeed, u16 EnemyX, u16 EnemyY, 
     }
     
     button=anglediferencetobuttonpress(requiredangle,EnemyAngle, bulletactive);
+/*    if (PlayerAngle==((EnemyAngle+2)&0x03)){
+        button=(button|((1<<right)+(1<<left)))^((1<<(right+qran_range(0x00,1)))); //this tells the enemy to getout of the way if the enimes coming their way
+    }*/ //this code can eb used to make the enemy turn of you face them
     button=speedupslowdown(button,PlayerX,PlayerY,PlayerSpeed,EnemyX,EnemyY,EnemySpeed,EnemyAngle);
 
     return button;

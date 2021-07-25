@@ -207,7 +207,7 @@ int main(){
    
         
         if (Enemy.turntimer==0x00){
-            Enemy.button=enemyai(Player.x,Player.y,Player.speed, Enemy.x,Enemy.y,Enemy.speed,Enemy.angle,Enemy.bulletactive);
+            Enemy.button=enemyai(Player.x,Player.y,Player.speed, Enemy.x,Enemy.y,Enemy.speed,Enemy.angle,Enemy.bulletactive, Player.angle);
 			
             if (Enemy.button & 1<<5){//5=left
                 ++Enemy.angle;
@@ -261,7 +261,7 @@ int main(){
 		
 		
 		
-		if ( (((ABS(Bullet.x-Enemy.x))<0x800  && (ABS(Bullet.y-Enemy.y))<0x800  )) && Player.bulletactive!=0){
+		if ( (((ABS(Bullet.x-Enemy.x))<0x600  && (ABS(Bullet.y-Enemy.y))<0x600  )) && Player.bulletactive!=0){
 			Enemy.hit=true;
 			gameover=true;
 			if ( (ABS(Player.x-Enemy.x))<0x800  && (ABS(Player.y-Enemy.y))<0x800  ){
