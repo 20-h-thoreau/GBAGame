@@ -73,7 +73,12 @@ int main(){
 	u16 bulletwaittimer=0;
 	bool openfire=false;
 	u8 level=startinglevel;
+	initilizebuffervariables();
     vsync();
+	fillbuffer();
+	switchoutdma();
+	initmusicregisters();
+	
 	OAM_CLEAR();
     DisplayController=0x1001;
     tonccpy(&Mem_Tile[4][1],sprite_bin,sprite_bin_size);
@@ -89,7 +94,7 @@ int main(){
     struct ObjectAttribute SpriteAttribute={0b0010000000000000, 0b0000000000000000, 0b0000000010000000};
     tonccpy(Obj_Attributes,&SpriteAttribute,12);
 	
-	initmusicregisters();
+
 	
 	
 	
@@ -296,6 +301,8 @@ int main(){
 
 		
         vsync();
+		fillbuffer();
+		switchoutdma();
 		OAM_CLEAR();
 
 		
@@ -373,6 +380,8 @@ void startscreen(void){
 	
 	while (startpressed==false){
 		vsync();
+		fillbuffer();
+		switchoutdma();
 		OAM_CLEAR();
 		if ((timer&0x1f)==0){
 			pressstart=(!pressstart); //this flickers the press start text
