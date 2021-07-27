@@ -117,7 +117,7 @@ export LIBPATHS	:=	$(foreach dir,$(LIBDIRS),-L$(dir)/lib)
 
 #---------------------------------------------------------------------------------
 $(BUILD):
-	@bash make_sprites.sh
+	@bash make_assets.sh
 	@[ -d $@ ] || mkdir -p $@
 	@$(MAKE) --no-print-directory -C $(BUILD) -f $(CURDIR)/Makefile
 

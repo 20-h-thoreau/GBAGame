@@ -17,11 +17,12 @@
 #include <tonc_bios.h>
 #include <tonc_math.h>
 
-
 #include "enemy.h"
 #include "graphics.h"
 #include "gameoverscreen.h"
 #include "spritepositionfunctions.h"
+#include "music.h"
+//#include "interupts.h" we will work on this later.
 
 #include "sprite_bin.h"
 #include "background.h"
@@ -68,6 +69,7 @@ u32 xyout; //this is jsut used to get x y out of functions where it is stored to
 
 
 int main(){
+
 	u16 bulletwaittimer=0;
 	bool openfire=false;
 	u8 level=startinglevel;
@@ -86,7 +88,12 @@ int main(){
 	tonccpy (&Mem_Tile[4][0x20],font_bin,font_bin_size);
     struct ObjectAttribute SpriteAttribute={0b0010000000000000, 0b0000000000000000, 0b0000000010000000};
     tonccpy(Obj_Attributes,&SpriteAttribute,12);
-
+	
+	initmusicregisters();
+	
+	
+	
+	//done with hardwareinit
 
 	
 	struct Ship Player;
