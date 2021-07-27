@@ -8,7 +8,8 @@ gameoverscreen.o: \
  /opt/devkitpro/libtonc/include/tonc_memdef.h \
  /opt/devkitpro/libtonc/include/tonc_core.h \
  /Users/thoreaukilbourne/Desktop/GBA/Game/src/defs.h \
- /Users/thoreaukilbourne/Desktop/GBA/Game/src/Graphics.h
+ /Users/thoreaukilbourne/Desktop/GBA/Game/src/Graphics.h \
+ /Users/thoreaukilbourne/Desktop/GBA/Game/src/music.h
 /Users/thoreaukilbourne/Desktop/GBA/Game/src/gameoverscreen.h:
 /opt/devkitpro/libtonc/include/tonc_types.h:
 /opt/devkitpro/libtonc/include/tonc_oam.h:
@@ -18,3 +19,4 @@ gameoverscreen.o: \
 /opt/devkitpro/libtonc/include/tonc_core.h:
 /Users/thoreaukilbourne/Desktop/GBA/Game/src/defs.h:
 /Users/thoreaukilbourne/Desktop/GBA/Game/src/Graphics.h:
+/Users/thoreaukilbourne/Desktop/GBA/Game/src/music.h:

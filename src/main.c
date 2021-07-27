@@ -66,7 +66,7 @@ static inline void waitforstart(){
 
 bool gameover=false;
 u32 xyout; //this is jsut used to get x y out of functions where it is stored together as one long value
-
+u8 exsplosion=0;
 
 int main(){
 
@@ -217,86 +217,94 @@ int main(){
 		
 		
    
-        
-        if (Enemy.turntimer==0x00){
-            Enemy.button=enemyai(Player.x,Player.y,Player.speed, Enemy.x,Enemy.y,Enemy.speed,Enemy.angle,Enemy.bulletactive, Player.angle);
-			
-            if (Enemy.button & 1<<5){//5=left
-                ++Enemy.angle;
-            }
-            if (Enemy.button & 1<<4){//4=right
-                --Enemy.angle;
-            }
-            Enemy.angle=Enemy.angle & 0x03;
-        }
-        
-        
-        
-        if (!(Enemy.button & 1<<up)){//7=down
-            Enemy.speed=Enemy.speed+Enemy.acceleration;
-            if (Enemy.speed>Enemy.maxspeed){
-                Enemy.speed=Enemy.maxspeed;
-            }
-        }
-        if (!(Enemy.button & 1<<down)){
-            Enemy.speed=Enemy.speed-Enemy.deceleration;
-            if (Enemy.speed<Enemy.minspeed){
-                Enemy.speed=Enemy.minspeed;
-            }
-        }
-        
-        xyout= anglespeed(Enemy.angle,Enemy.speed,Enemy.x,Enemy.y);
-        Enemy.x=(xyout>>16);
-        Enemy.y=(xyout&0xffff);
-        
-        
-		
+		if (Enemy.hit==false){
 
-
-
-			
-		
-        if ((Enemy.bulletactive &0x80) !=0){
-            xyout=anglespeed(Bullet1.angle, Bullet1.BulletSpeed, Bullet1.x, Bullet1.y);
-            Bullet1.x=(xyout>>16);
-            Bullet1.y=(xyout&0xffff);
-            Bullet1.BulletTimer=((Bullet.BulletTimer+1)&0x3f);
-        }
-        
-        if (Bullet1.BulletTimer==0){
-            Bullet1.y=250<<8;//not sure this is nessisary
-			Enemy.bulletactive=Enemy.bulletactive&0x7f;
-            
-        }
-            
-        
-		
-		
-		
-		if ( (((ABS(Bullet.x-Enemy.x))<0x600  && (ABS(Bullet.y-Enemy.y))<0x600  )) && Player.bulletactive!=0){
-			Enemy.hit=true;
-			gameover=true;
-			if ( (ABS(Player.x-Enemy.x))<0x800  && (ABS(Player.y-Enemy.y))<0x800  ){
-				Player.hit=true;
+			if (Enemy.turntimer==0x00 ){
+				Enemy.button=enemyai(Player.x,Player.y,Player.speed, Enemy.x,Enemy.y,Enemy.speed,Enemy.angle,Enemy.bulletactive, Player.angle);
+				
+				if (Enemy.button & 1<<5){//5=left
+					++Enemy.angle;
+				}
+				if (Enemy.button & 1<<4){//4=right
+					--Enemy.angle;
+				}
+				Enemy.angle=Enemy.angle & 0x03;
 			}
-		}
+			
+			
+			
+			if (!(Enemy.button & 1<<up)){//7=down
+				Enemy.speed=Enemy.speed+Enemy.acceleration;
+				if (Enemy.speed>Enemy.maxspeed){
+					Enemy.speed=Enemy.maxspeed;
+				}
+			}
+			if (!(Enemy.button & 1<<down)){
+				Enemy.speed=Enemy.speed-Enemy.deceleration;
+				if (Enemy.speed<Enemy.minspeed){
+					Enemy.speed=Enemy.minspeed;
+				}
+			}
+			
+			xyout= anglespeed(Enemy.angle,Enemy.speed,Enemy.x,Enemy.y);
+			Enemy.x=(xyout>>16);
+			Enemy.y=(xyout&0xffff);
+			
+			
+			
+
+
+
+				
+			
+			if ((Enemy.bulletactive &0x80) !=0){
+				xyout=anglespeed(Bullet1.angle, Bullet1.BulletSpeed, Bullet1.x, Bullet1.y);
+				Bullet1.x=(xyout>>16);
+				Bullet1.y=(xyout&0xffff);
+				Bullet1.BulletTimer=((Bullet.BulletTimer+1)&0x3f);
+			}
+			
+			if (Bullet1.BulletTimer==0){
+				Bullet1.y=250<<8;//not sure this is nessisary
+				Enemy.bulletactive=Enemy.bulletactive&0x7f;
+				
+			}
+				
+			
+			
+			
+			
+			if ( (((ABS(Bullet.x-Enemy.x))<0x600  && (ABS(Bullet.y-Enemy.y))<0x600  )) && Player.bulletactive!=0){
+				Enemy.hit=true;
+				Enemy.button=0xffff;
+				Enemy.bulletactive=0;
+				
+			}
+			
+			if ( (ABS(Player.x-Enemy.x))<0x800  && (ABS(Player.y-Enemy.y))<0x800 && Enemy.hit==false){
+				Player.hit=true;
+				
+				gameover=true;
+				
+			}
+		
 		
       
-		if ( (ABS(Player.x-Enemy.x))<0x400  && (ABS(Player.y-Enemy.y))<0x400  ){
-			gameover=true; //this ends the game in the event of a collision
-			Enemy.hit=true;
-			Player.hit=true;
-			}
-		
+			if ( (ABS(Player.x-Enemy.x))<0x400  && (ABS(Player.y-Enemy.y))<0x400 && Enemy.hit==false){
+				gameover=true; //this ends the game in the event of a collision
+				Enemy.hit=true;
+				Player.hit=true;
+				}
+			
 		
 
         
-        if ( (((ABS(Bullet1.x-Player.x))<0x300  && (ABS(Bullet1.y-Player.y))<0x300  )) && Enemy.bulletactive!=0){
-            Player.hit=true;
-            gameover=true;
-        }
-        
-        
+			if ( (((ABS(Bullet1.x-Player.x))<0x300  && (ABS(Bullet1.y-Player.y))<0x300  )) && Enemy.bulletactive!=0){
+				Player.hit=true;
+				gameover=true;
+			}
+			
+		}
         
 
 		
@@ -313,6 +321,25 @@ int main(){
 		
 		if (!Enemy.hit) {
 			createship(Enemy.x,Enemy.y,32,Enemy.angle,Enemy.ally);
+		}
+		else{
+			
+			if (exsplosion<0x40){ //exsplosion will incriment each frame
+				createship(Enemy.x,Enemy.y,32,(8+(exsplosion>>4)),true);//this can be changed to false once we fix the problem with the pallete generation, also exsplotion might need bitshifitn 7 times not 8
+				
+			}
+			else{
+				if (exsplosion>=0x80){
+					Enemy.hit=false;
+					Enemy.x=0;
+					Enemy.y=0;
+					Enemy.bulletactive=0;
+					Enemy.speed=100;
+					exsplosion=0; //resets the enemy and puts them onto the field we should add an animation here later on.
+				}
+			}
+			++exsplosion;
+			
 		}
         /*if (turntimer&0x01){
             createbullet(x,y,255,0,true); //this creates a jet stream
@@ -334,7 +361,7 @@ int main(){
             }
         }
         
-        if ((Enemy.button & 1<<1) && (Enemy.turntimer&0x03)==0 && openfire) {
+		if ((Enemy.button & 1<<1) && (Enemy.turntimer&0x03)==0 && openfire && Enemy.hit==false) {
 			Bullet1.x=Enemy.x;
 			Bullet1.y=Enemy.y;
 			Bullet1.angle=Enemy.angle;
@@ -345,10 +372,11 @@ int main(){
         }
         else{
             if ((Enemy.bulletactive&0x80)!=0){
-            createbullet(Bullet1.x,Bullet1.y,33,Bullet1.angle,false);//if we used a pointer that would be helpfull here my dude instead of having to seperate fucntions
+            createbullet(Bullet1.x,Bullet1.y,33,Bullet1.angle,false);
             }
         }
         
+		
     }
 
 	

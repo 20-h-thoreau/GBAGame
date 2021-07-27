@@ -3,6 +3,7 @@
 #include <tonc_oam.h>
 #include "defs.h"
 #include "Graphics.h"
+#include "music.h"
 
 void deathanimation(bool playerhit, bool enemyhit,u16 playerx, u16 playery, u8 playerangle, u16 enemyx, u16 enemyy, u8 enemyangle){
 
@@ -12,6 +13,8 @@ void deathanimation(bool playerhit, bool enemyhit,u16 playerx, u16 playery, u8 p
             ++animationcounter;
         }
         vsync();
+        fillbuffer();
+        switchoutdma();
         OAM_CLEAR();
         if (playerhit==false){
             createship(playerx,playery,0,playerangle,true);
@@ -46,6 +49,8 @@ void gameoverscreen(void){
     
     while (startpressed==false){
         vsync();
+        fillbuffer();
+        switchoutdma();
         OAM_CLEAR();
         displaytext(GameOver, 9, 0, 80,40,01);
         

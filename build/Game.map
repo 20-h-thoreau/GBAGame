@@ -145,7 +145,7 @@ Linker script and memory map
  *(.plt)
                 0x000000000800021c                . = ALIGN (0x4)
 
-.text           0x000000000800021c     0x11ac
+.text           0x000000000800021c     0x1210
  *(EXCLUDE_FILE(*.iwram*) .text*)
  .text.__do_global_dtors_aux
                 0x000000000800021c       0x2c /opt/devkitpro/devkitARM/bin/../lib/gcc/arm-none-eabi/11.1.0/thumb/crtbegin.o
@@ -158,182 +158,182 @@ Linker script and memory map
                 0x00000000080003d4                anglediferencetobuttonpress
                 0x0000000008000498                speedupslowdown
                 0x000000000800050c                enemyai
- .text          0x00000000080005c0      0x1f4 gameoverscreen.o
+ .text          0x00000000080005c0      0x204 gameoverscreen.o
                 0x00000000080005c0                deathanimation
-                0x00000000080006a8                gameoverscreen
- .text          0x00000000080007b4       0xe0 graphics.o
-                0x00000000080007b4                displaytext
-                0x0000000008000828                createship
-                0x0000000008000860                createbullet
- .text          0x0000000008000894       0xd8 main.o
-                0x0000000008000894                startscreen
- .text.startup  0x000000000800096c      0x600 main.o
-                0x000000000800096c                main
- .text          0x0000000008000f6c      0x10c music.o
-                0x0000000008000f6c                initmusicregisters
-                0x0000000008000fc8                switchoutdma
-                0x0000000008000ffc                fillbuffer
-                0x0000000008001068                initilizebuffervariables
- .text          0x0000000008001078      0x1c4 /opt/devkitpro/libtonc/lib/libtonc.a(tonc_core.o)
-                0x0000000008001078                tonccpy
-                0x0000000008001128                __toncset
-                0x00000000080011b8                sqran
-                0x00000000080011c8                octant
-                0x00000000080011e8                octant_rot
- .text          0x000000000800123c       0x8c /opt/devkitpro/libtonc/lib/libtonc.a(tonc_bios.o)
-                0x000000000800123c                SoftReset
-                0x0000000008001240                RegisterRamReset
-                0x0000000008001244                Halt
-                0x0000000008001248                Stop
-                0x000000000800124c                IntrWait
-                0x0000000008001250                VBlankIntrWait
-                0x0000000008001254                Div
-                0x0000000008001258                DivArm
-                0x000000000800125c                Sqrt
-                0x0000000008001260                ArcTan
-                0x0000000008001264                ArcTan2
-                0x0000000008001268                CpuSet
-                0x000000000800126c                CpuFastSet
-                0x0000000008001270                BiosCheckSum
-                0x0000000008001274                BgAffineSet
-                0x0000000008001278                ObjAffineSet
-                0x000000000800127c                BitUnPack
-                0x0000000008001280                LZ77UnCompWram
-                0x0000000008001284                LZ77UnCompVram
-                0x0000000008001288                HuffUnComp
-                0x000000000800128c                RLUnCompWram
-                0x0000000008001290                RLUnCompVram
-                0x0000000008001294                Diff8bitUnFilterWram
-                0x0000000008001298                Diff8bitUnFilterVram
-                0x000000000800129c                Diff16bitUnFilter
-                0x00000000080012a0                SoundBias
-                0x00000000080012a4                SoundDriverInit
-                0x00000000080012a8                SoundDriverMode
-                0x00000000080012ac                SoundDriverMain
-                0x00000000080012b0                SoundDriverVSync
-                0x00000000080012b4                SoundChannelClear
-                0x00000000080012b8                MidiKey2Freq
-                0x00000000080012bc                MultiBoot
-                0x00000000080012c0                SoundDriverVSyncOff
-                0x00000000080012c4                SoundDriverVSyncOn
+                0x00000000080006b0                gameoverscreen
+ .text          0x00000000080007c4       0xe0 graphics.o
+                0x00000000080007c4                displaytext
+                0x0000000008000838                createship
+                0x0000000008000870                createbullet
+ .text          0x00000000080008a4       0xd8 main.o
+                0x00000000080008a4                startscreen
+ .text.startup  0x000000000800097c      0x654 main.o
+                0x000000000800097c                main
+ .text          0x0000000008000fd0      0x10c music.o
+                0x0000000008000fd0                initmusicregisters
+                0x000000000800102c                switchoutdma
+                0x0000000008001060                fillbuffer
+                0x00000000080010cc                initilizebuffervariables
+ .text          0x00000000080010dc      0x1c4 /opt/devkitpro/libtonc/lib/libtonc.a(tonc_core.o)
+                0x00000000080010dc                tonccpy
+                0x000000000800118c                __toncset
+                0x000000000800121c                sqran
+                0x000000000800122c                octant
+                0x000000000800124c                octant_rot
+ .text          0x00000000080012a0       0x8c /opt/devkitpro/libtonc/lib/libtonc.a(tonc_bios.o)
+                0x00000000080012a0                SoftReset
+                0x00000000080012a4                RegisterRamReset
+                0x00000000080012a8                Halt
+                0x00000000080012ac                Stop
+                0x00000000080012b0                IntrWait
+                0x00000000080012b4                VBlankIntrWait
+                0x00000000080012b8                Div
+                0x00000000080012bc                DivArm
+                0x00000000080012c0                Sqrt
+                0x00000000080012c4                ArcTan
+                0x00000000080012c8                ArcTan2
+                0x00000000080012cc                CpuSet
+                0x00000000080012d0                CpuFastSet
+                0x00000000080012d4                BiosCheckSum
+                0x00000000080012d8                BgAffineSet
+                0x00000000080012dc                ObjAffineSet
+                0x00000000080012e0                BitUnPack
+                0x00000000080012e4                LZ77UnCompWram
+                0x00000000080012e8                LZ77UnCompVram
+                0x00000000080012ec                HuffUnComp
+                0x00000000080012f0                RLUnCompWram
+                0x00000000080012f4                RLUnCompVram
+                0x00000000080012f8                Diff8bitUnFilterWram
+                0x00000000080012fc                Diff8bitUnFilterVram
+                0x0000000008001300                Diff16bitUnFilter
+                0x0000000008001304                SoundBias
+                0x0000000008001308                SoundDriverInit
+                0x000000000800130c                SoundDriverMode
+                0x0000000008001310                SoundDriverMain
+                0x0000000008001314                SoundDriverVSync
+                0x0000000008001318                SoundChannelClear
+                0x000000000800131c                MidiKey2Freq
+                0x0000000008001320                MultiBoot
+                0x0000000008001324                SoundDriverVSyncOff
+                0x0000000008001328                SoundDriverVSyncOn
  .text.__libc_init_array
-                0x00000000080012c8       0x50 /opt/devkitpro/devkitARM/bin/../lib/gcc/arm-none-eabi/11.1.0/../../../../arm-none-eabi/lib/thumb/libg.a(lib_a-init.o)
-                0x00000000080012c8                __libc_init_array
- .text.memset   0x0000000008001318       0xb0 /opt/devkitpro/devkitARM/bin/../lib/gcc/arm-none-eabi/11.1.0/../../../../arm-none-eabi/lib/thumb/libg.a(lib_a-memset.o)
-                0x0000000008001318                memset
+                0x000000000800132c       0x50 /opt/devkitpro/devkitARM/bin/../lib/gcc/arm-none-eabi/11.1.0/../../../../arm-none-eabi/lib/thumb/libg.a(lib_a-init.o)
+                0x000000000800132c                __libc_init_array
+ .text.memset   0x000000000800137c       0xb0 /opt/devkitpro/devkitARM/bin/../lib/gcc/arm-none-eabi/11.1.0/../../../../arm-none-eabi/lib/thumb/libg.a(lib_a-memset.o)
+                0x000000000800137c                memset
  *(.gnu.linkonce.t.*)
  *(.text.*personality*)
  *(.gnu.warning)
  *(.glue_7t)
- .glue_7t       0x00000000080013c8        0x0 linker stubs
+ .glue_7t       0x000000000800142c        0x0 linker stubs
  *(.glue_7)
- .glue_7        0x00000000080013c8        0x0 linker stubs
+ .glue_7        0x000000000800142c        0x0 linker stubs
  *(.vfp11_veneer)
- .vfp11_veneer  0x00000000080013c8        0x0 linker stubs
-                0x00000000080013c8                . = ALIGN (0x4)
-                0x00000000080013c8                __text_end = .
+ .vfp11_veneer  0x000000000800142c        0x0 linker stubs
+                0x000000000800142c                . = ALIGN (0x4)
+                0x000000000800142c                __text_end = .
 
-.v4_bx          0x00000000080013c8        0x0
- .v4_bx         0x00000000080013c8        0x0 linker stubs
+.v4_bx          0x000000000800142c        0x0
+ .v4_bx         0x000000000800142c        0x0 linker stubs
 
-.iplt           0x00000000080013c8        0x0
- .iplt          0x00000000080013c8        0x0 /opt/devkitpro/devkitARM/bin/../lib/gcc/arm-none-eabi/11.1.0/../../../../arm-none-eabi/lib/thumb/gba_crt0.o
+.iplt           0x000000000800142c        0x0
+ .iplt          0x000000000800142c        0x0 /opt/devkitpro/devkitARM/bin/../lib/gcc/arm-none-eabi/11.1.0/../../../../arm-none-eabi/lib/thumb/gba_crt0.o
 
-.fini           0x00000000080013c8        0xc
+.fini           0x000000000800142c        0xc
  *(.fini)
- .fini          0x00000000080013c8        0x4 /opt/devkitpro/devkitARM/bin/../lib/gcc/arm-none-eabi/11.1.0/thumb/crti.o
-                0x00000000080013c8                _fini
- .fini          0x00000000080013cc        0x8 /opt/devkitpro/devkitARM/bin/../lib/gcc/arm-none-eabi/11.1.0/thumb/crtn.o
-                0x00000000080013d4                . = ALIGN (0x4)
+ .fini          0x000000000800142c        0x4 /opt/devkitpro/devkitARM/bin/../lib/gcc/arm-none-eabi/11.1.0/thumb/crti.o
+                0x000000000800142c                _fini
+ .fini          0x0000000008001430        0x8 /opt/devkitpro/devkitARM/bin/../lib/gcc/arm-none-eabi/11.1.0/thumb/crtn.o
+                0x0000000008001438                . = ALIGN (0x4)
 
-.rodata         0x00000000080013d4   0x141268
+.rodata         0x0000000008001438   0x141268
  *(.rodata)
- .rodata        0x00000000080013d4      0x888 background.o
-                0x00000000080013d4                checkerBg
-                0x0000000008001bd4                bgPal
-                0x0000000008001bdc                bgTiles
- .rodata        0x0000000008001c5c        0xe main.o
-                0x0000000008001c5c                ScreenHieght
-                0x0000000008001c5d                ScreenWidth
-                0x0000000008001c5e                start
-                0x0000000008001c60                b
-                0x0000000008001c62                right
-                0x0000000008001c64                left
-                0x0000000008001c66                up
-                0x0000000008001c68                down
- *fill*         0x0000000008001c6a        0x2 ff
- .rodata        0x0000000008001c6c   0x1404f6 music.o
-                0x0000000008001c6c                skytheme
+ .rodata        0x0000000008001438      0x888 background.o
+                0x0000000008001438                checkerBg
+                0x0000000008001c38                bgPal
+                0x0000000008001c40                bgTiles
+ .rodata        0x0000000008001cc0        0xe main.o
+                0x0000000008001cc0                ScreenHieght
+                0x0000000008001cc1                ScreenWidth
+                0x0000000008001cc2                start
+                0x0000000008001cc4                b
+                0x0000000008001cc6                right
+                0x0000000008001cc8                left
+                0x0000000008001cca                up
+                0x0000000008001ccc                down
+ *fill*         0x0000000008001cce        0x2 ff
+ .rodata        0x0000000008001cd0   0x1404f6 music.o
+                0x0000000008001cd0                skytheme
  *all.rodata*(*)
  *(.roda)
  *(.rodata.*)
- *fill*         0x0000000008142162        0x2 ff
+ *fill*         0x00000000081421c6        0x2 ff
  .rodata.bullet_bin
-                0x0000000008142164       0x20 bullet.bin.o
-                0x0000000008142164                bullet_bin
-                0x0000000008142184                bullet_bin_end
+                0x00000000081421c8       0x20 bullet.bin.o
+                0x00000000081421c8                bullet_bin
+                0x00000000081421e8                bullet_bin_end
  .rodata.enemypallete_bin
-                0x0000000008142184       0x20 enemypallete.bin.o
-                0x0000000008142184                enemypallete_bin
-                0x00000000081421a4                enemypallete_bin_end
+                0x00000000081421e8       0x20 enemypallete.bin.o
+                0x00000000081421e8                enemypallete_bin
+                0x0000000008142208                enemypallete_bin_end
  .rodata.exsplosion_bin
-                0x00000000081421a4       0x80 exsplosion.bin.o
-                0x00000000081421a4                exsplosion_bin
-                0x0000000008142224                exsplosion_bin_end
+                0x0000000008142208       0x80 exsplosion.bin.o
+                0x0000000008142208                exsplosion_bin
+                0x0000000008142288                exsplosion_bin_end
  .rodata.font_bin
-                0x0000000008142224      0x360 font.bin.o
-                0x0000000008142224                font_bin
-                0x0000000008142584                font_bin_end
+                0x0000000008142288      0x360 font.bin.o
+                0x0000000008142288                font_bin
+                0x00000000081425e8                font_bin_end
  .rodata.playerpallete_bin
-                0x0000000008142584       0x20 playerpallete.bin.o
-                0x0000000008142584                playerpallete_bin
-                0x00000000081425a4                playerpallete_bin_end
+                0x00000000081425e8       0x20 playerpallete.bin.o
+                0x00000000081425e8                playerpallete_bin
+                0x0000000008142608                playerpallete_bin_end
  .rodata.sprite_bin
-                0x00000000081425a4       0x80 sprite.bin.o
-                0x00000000081425a4                sprite_bin
-                0x0000000008142624                sprite_bin_end
+                0x0000000008142608       0x80 sprite.bin.o
+                0x0000000008142608                sprite_bin
+                0x0000000008142688                sprite_bin_end
  .rodata.str1.4
-                0x0000000008142624       0x18 gameoverscreen.o
+                0x0000000008142688       0x18 gameoverscreen.o
  .rodata.str1.4
-                0x000000000814263c        0xc main.o
+                0x00000000081426a0        0xc main.o
  *(.gnu.linkonce.r*)
-                0x0000000008142648                . = ALIGN (0x4)
+                0x00000000081426ac                . = ALIGN (0x4)
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x000000000814263c                __exidx_start = .
+                0x00000000081426a0                __exidx_start = .
 
 .ARM.exidx
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
-                0x000000000814263c                __exidx_end = .
+                0x00000000081426a0                __exidx_end = .
 
-.ctors          0x000000000814263c        0x0
+.ctors          0x00000000081426a0        0x0
  *crtbegin.o(.ctors)
  *(EXCLUDE_FILE(*crtend.o) .ctors)
  *(SORT_BY_NAME(.ctors.*))
  *(.ctors)
-                0x000000000814263c                . = ALIGN (0x4)
+                0x00000000081426a0                . = ALIGN (0x4)
 
-.dtors          0x000000000814263c        0x0
+.dtors          0x00000000081426a0        0x0
  *crtbegin.o(.dtors)
  *(EXCLUDE_FILE(*crtend.o) .dtors)
  *(SORT_BY_NAME(.dtors.*))
  *(.dtors)
-                0x000000000814263c                . = ALIGN (0x4)
+                0x00000000081426a0                . = ALIGN (0x4)
 
-.eh_frame       0x000000000814263c        0x4
+.eh_frame       0x00000000081426a0        0x4
  *(.eh_frame)
- .eh_frame      0x000000000814263c        0x0 /opt/devkitpro/devkitARM/bin/../lib/gcc/arm-none-eabi/11.1.0/thumb/crtbegin.o
- .eh_frame      0x000000000814263c        0x4 /opt/devkitpro/devkitARM/bin/../lib/gcc/arm-none-eabi/11.1.0/thumb/crtend.o
-                0x0000000008142640                . = ALIGN (0x4)
+ .eh_frame      0x00000000081426a0        0x0 /opt/devkitpro/devkitARM/bin/../lib/gcc/arm-none-eabi/11.1.0/thumb/crtbegin.o
+ .eh_frame      0x00000000081426a0        0x4 /opt/devkitpro/devkitARM/bin/../lib/gcc/arm-none-eabi/11.1.0/thumb/crtend.o
+                0x00000000081426a4                . = ALIGN (0x4)
 
 .gcc_except_table
-                0x0000000008142640        0x0
+                0x00000000081426a4        0x0
  *(.gcc_except_table)
-                0x0000000008142640                . = ALIGN (0x4)
-                0x0000000008142640                __iwram_lma = .
+                0x00000000081426a4                . = ALIGN (0x4)
+                0x00000000081426a4                __iwram_lma = .
 
-.iwram          0x0000000003000000       0x4c load address 0x0000000008142640
+.iwram          0x0000000003000000       0x4c load address 0x00000000081426a4
                 0x0000000003000000                __iwram_start__ = ABSOLUTE (.)
  *(.iwram .iwram*)
  .iwram         0x0000000003000000       0x4c /opt/devkitpro/libtonc/lib/libtonc.a(tonc_memset.o)
@@ -341,9 +341,9 @@ Linker script and memory map
  *iwram.*(.text* .data*)
                 0x000000000300004c                . = ALIGN (0x4)
                 0x000000000300004c                __iwram_end__ = ABSOLUTE (.)
-                0x000000000814268c                __data_lma = (__iwram_lma + SIZEOF (.iwram))
+                0x00000000081426f0                __data_lma = (__iwram_lma + SIZEOF (.iwram))
 
-.rel.dyn        0x000000000300004c        0x0 load address 0x000000000814268c
+.rel.dyn        0x000000000300004c        0x0 load address 0x00000000081426f0
  .rel.iplt      0x000000000300004c        0x0 /opt/devkitpro/devkitARM/bin/../lib/gcc/arm-none-eabi/11.1.0/../../../../arm-none-eabi/lib/thumb/gba_crt0.o
 
 .bss            0x000000000300004c      0x29c
@@ -356,11 +356,12 @@ Linker script and memory map
                 0x000000000300004c        0x1 /opt/devkitpro/devkitARM/bin/../lib/gcc/arm-none-eabi/11.1.0/thumb/crtbegin.o
  *fill*         0x000000000300004d        0x3 
  .bss.object.0  0x0000000003000050       0x18 /opt/devkitpro/devkitARM/bin/../lib/gcc/arm-none-eabi/11.1.0/thumb/crtbegin.o
- .bss           0x0000000003000068        0x9 main.o
+ .bss           0x0000000003000068        0xa main.o
                 0x0000000003000068                gameover
                 0x000000000300006c                xyout
-                0x0000000003000070                level
- *fill*         0x0000000003000071        0x3 
+                0x0000000003000070                exsplosion
+                0x0000000003000071                level
+ *fill*         0x0000000003000072        0x2 
  .bss           0x0000000003000074      0x270 music.o
                 0x0000000003000074                BufferAttributes
                 0x000000000300007c                SongData
@@ -372,7 +373,7 @@ Linker script and memory map
                 0x00000000030002e8                . = ALIGN (0x4)
                 0x00000000030002e8                __bss_end__ = ABSOLUTE (.)
 
-.data           0x00000000030002e8        0x8 load address 0x000000000814268c
+.data           0x00000000030002e8        0x8 load address 0x00000000081426f0
                 0x00000000030002e8                __data_start__ = ABSOLUTE (.)
  *(.data*)
  .data          0x00000000030002e8        0x8 /opt/devkitpro/libtonc/lib/libtonc.a(tonc_core.o)
@@ -380,44 +381,44 @@ Linker script and memory map
                 0x00000000030002ec                vid_page
  *(.gnu.linkonce.d*)
                 0x00000000030002f0                . = ALIGN (0x4)
-                0x0000000008142694                __preinit_lma = (__data_lma + SIZEOF (.data))
+                0x00000000081426f8                __preinit_lma = (__data_lma + SIZEOF (.data))
 
-.igot.plt       0x00000000030002f0        0x0 load address 0x0000000008142694
+.igot.plt       0x00000000030002f0        0x0 load address 0x00000000081426f8
  .igot.plt      0x00000000030002f0        0x0 /opt/devkitpro/devkitARM/bin/../lib/gcc/arm-none-eabi/11.1.0/../../../../arm-none-eabi/lib/thumb/gba_crt0.o
 
-.preinit_array  0x00000000030002f0        0x0 load address 0x0000000008142694
+.preinit_array  0x00000000030002f0        0x0 load address 0x00000000081426f8
                 0x00000000030002f0                __preinit_array_start = ABSOLUTE (.)
  *(.preinit_array)
                 0x00000000030002f0                __preinit_array_end = ABSOLUTE (.)
-                0x0000000008142694                __init_lma = (__preinit_lma + SIZEOF (.preinit_array))
+                0x00000000081426f8                __init_lma = (__preinit_lma + SIZEOF (.preinit_array))
 
-.init_array     0x00000000030002f0        0x4 load address 0x0000000008142694
+.init_array     0x00000000030002f0        0x4 load address 0x00000000081426f8
                 0x00000000030002f0                __init_array_start = ABSOLUTE (.)
  *(SORT_BY_NAME(.init_array.*))
  *(.init_array)
  .init_array    0x00000000030002f0        0x4 /opt/devkitpro/devkitARM/bin/../lib/gcc/arm-none-eabi/11.1.0/thumb/crtbegin.o
                 0x00000000030002f4                __init_array_end = ABSOLUTE (.)
-                0x0000000008142698                __fini_lma = (__init_lma + SIZEOF (.init_array))
+                0x00000000081426fc                __fini_lma = (__init_lma + SIZEOF (.init_array))
 
-.fini_array     0x00000000030002f4        0x4 load address 0x0000000008142698
+.fini_array     0x00000000030002f4        0x4 load address 0x00000000081426fc
                 0x00000000030002f4                __fini_array_start = ABSOLUTE (.)
  *(SORT_BY_NAME(.fini_array.*))
  *(.fini_array)
  .fini_array    0x00000000030002f4        0x4 /opt/devkitpro/devkitARM/bin/../lib/gcc/arm-none-eabi/11.1.0/thumb/crtbegin.o
                 0x00000000030002f8                __fini_array_end = ABSOLUTE (.)
-                0x000000000814269c                __jcr_lma = (__fini_lma + SIZEOF (.fini_array))
+                0x0000000008142700                __jcr_lma = (__fini_lma + SIZEOF (.fini_array))
 
-.jcr            0x00000000030002f8        0x0 load address 0x000000000814269c
+.jcr            0x00000000030002f8        0x0 load address 0x0000000008142700
  *(.jcr)
                 0x00000000030002f8                __data_end__ = ABSOLUTE (.)
-                0x000000000814269c                __iwram_overlay_lma = (__jcr_lma + SIZEOF (.jcr))
+                0x0000000008142700                __iwram_overlay_lma = (__jcr_lma + SIZEOF (.jcr))
                 0x00000000030002f8                __iwram_overlay_start = .
 
-.iwram0         0x00000000030002f8        0x0 load address 0x000000000814269c
+.iwram0         0x00000000030002f8        0x0 load address 0x0000000008142700
  *(.iwram0)
                 0x00000000030002f8                . = ALIGN (0x4)
-                0x000000000814269c                PROVIDE (__load_start_iwram0 = LOADADDR (.iwram0))
-                0x000000000814269c                PROVIDE (__load_stop_iwram0 = (LOADADDR (.iwram0) + SIZEOF (.iwram0)))
+                0x0000000008142700                PROVIDE (__load_start_iwram0 = LOADADDR (.iwram0))
+                0x0000000008142700                PROVIDE (__load_stop_iwram0 = (LOADADDR (.iwram0) + SIZEOF (.iwram0)))
 
 .iwram1         0x00000000030002f8        0x0
  *(.iwram1)
@@ -473,15 +474,15 @@ Linker script and memory map
                 [!provide]                        PROVIDE (__load_start_iwram9 = LOADADDR (.iwram9))
                 [!provide]                        PROVIDE (__load_stop_iwram9 = (LOADADDR (.iwram9) + SIZEOF (.iwram9)))
                 0x00000000030002f8                __iwram_overlay_end = .
-                0x000000000814269c                __ewram_lma = (__iwram_overlay_lma + (__iwram_overlay_end - __iwram_overlay_start))
+                0x0000000008142700                __ewram_lma = (__iwram_overlay_lma + (__iwram_overlay_end - __iwram_overlay_start))
                 0x00000000030002f8                __iheap_start = .
                 0x0000000002000000                __ewram_start = ORIGIN (ewram)
 
-.ewram          0x0000000002000000        0x0 load address 0x000000000814269c
+.ewram          0x0000000002000000        0x0 load address 0x0000000008142700
  *(.ewram*)
                 0x0000000002000000                . = ALIGN (0x4)
                 0x0000000002000000                __ewram_end = ABSOLUTE (.)
-                0x000000000814269c                __pad_lma = (__ewram_lma + SIZEOF (.ewram))
+                0x0000000008142700                __pad_lma = (__ewram_lma + SIZEOF (.ewram))
 
 .sbss           0x0000000002000000        0x0
                 0x0000000002000000                __sbss_start__ = ABSOLUTE (.)
@@ -491,11 +492,11 @@ Linker script and memory map
                 0x0000000002000000                __end__ = ABSOLUTE (.)
                 0x0000000002000000                __eheap_start = ABSOLUTE (.)
 
-.pad            0x0000000002000000        0x8 load address 0x000000000814269c
+.pad            0x0000000002000000        0x8 load address 0x0000000008142700
                 0x0000000002000000        0x4 LONG 0x52416b64
                 0x0000000002000004        0x4 LONG 0x4d
                 0x0000000002000008                . = ALIGN (0x4)
-                0x00000000081426a4                __rom_end__ = (__pad_lma + SIZEOF (.pad))
+                0x0000000008142708                __rom_end__ = (__pad_lma + SIZEOF (.pad))
 
 .stab
  *(.stab)
@@ -565,35 +566,35 @@ Linker script and memory map
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x0000000000000000     0x1e22
+.debug_info     0x0000000000000000     0x1e87
  *(.debug_info)
  .debug_info    0x0000000000000000      0x218 SpritePositionFunctions.o
  .debug_info    0x0000000000000218       0xa2 background.o
  .debug_info    0x00000000000002ba      0x4ca enemy.o
- .debug_info    0x0000000000000784      0x524 gameoverscreen.o
- .debug_info    0x0000000000000ca8      0x263 graphics.o
- .debug_info    0x0000000000000f0b      0xca5 main.o
- .debug_info    0x0000000000001bb0      0x272 music.o
+ .debug_info    0x0000000000000784      0x560 gameoverscreen.o
+ .debug_info    0x0000000000000ce4      0x263 graphics.o
+ .debug_info    0x0000000000000f47      0xcce main.o
+ .debug_info    0x0000000000001c15      0x272 music.o
 
-.debug_abbrev   0x0000000000000000      0xc18
+.debug_abbrev   0x0000000000000000      0xc27
  *(.debug_abbrev)
  .debug_abbrev  0x0000000000000000      0x156 SpritePositionFunctions.o
  .debug_abbrev  0x0000000000000156       0x6a background.o
  .debug_abbrev  0x00000000000001c0      0x223 enemy.o
- .debug_abbrev  0x00000000000003e3      0x24d gameoverscreen.o
- .debug_abbrev  0x0000000000000630      0x112 graphics.o
- .debug_abbrev  0x0000000000000742      0x395 main.o
- .debug_abbrev  0x0000000000000ad7      0x141 music.o
+ .debug_abbrev  0x00000000000003e3      0x270 gameoverscreen.o
+ .debug_abbrev  0x0000000000000653      0x112 graphics.o
+ .debug_abbrev  0x0000000000000765      0x381 main.o
+ .debug_abbrev  0x0000000000000ae6      0x141 music.o
 
-.debug_line     0x0000000000000000     0x1536
+.debug_line     0x0000000000000000     0x161e
  *(.debug_line)
  .debug_line    0x0000000000000000      0x233 SpritePositionFunctions.o
  .debug_line    0x0000000000000233       0x5a background.o
  .debug_line    0x000000000000028d      0x2f9 enemy.o
- .debug_line    0x0000000000000586      0x252 gameoverscreen.o
- .debug_line    0x00000000000007d8      0x204 graphics.o
- .debug_line    0x00000000000009dc      0x8c5 main.o
- .debug_line    0x00000000000012a1      0x295 music.o
+ .debug_line    0x0000000000000586      0x25f gameoverscreen.o
+ .debug_line    0x00000000000007e5      0x204 graphics.o
+ .debug_line    0x00000000000009e9      0x9a0 main.o
+ .debug_line    0x0000000000001389      0x295 music.o
 
 .debug_frame    0x0000000000000000      0x24c
  *(.debug_frame)
@@ -604,7 +605,7 @@ Linker script and memory map
  .debug_frame   0x0000000000000188       0x68 main.o
  .debug_frame   0x00000000000001f0       0x5c music.o
 
-.debug_str      0x0000000000000000      0x7f9
+.debug_str      0x0000000000000000      0x804
  *(.debug_str)
  .debug_str     0x0000000000000000      0x13e SpritePositionFunctions.o
                                         0x16d (size before relaxing)
@@ -612,13 +613,13 @@ Linker script and memory map
                                          0xfe (size before relaxing)
  .debug_str     0x0000000000000190      0x14f enemy.o
                                         0x24e (size before relaxing)
- .debug_str     0x00000000000002df      0x145 gameoverscreen.o
-                                        0x28e (size before relaxing)
- .debug_str     0x0000000000000424       0xa8 graphics.o
+ .debug_str     0x00000000000002df      0x15d gameoverscreen.o
+                                        0x2a6 (size before relaxing)
+ .debug_str     0x000000000000043c       0xa8 graphics.o
                                         0x1f0 (size before relaxing)
- .debug_str     0x00000000000004cc      0x267 main.o
-                                        0x4be (size before relaxing)
- .debug_str     0x0000000000000733       0xc6 music.o
+ .debug_str     0x00000000000004e4      0x25a main.o
+                                        0x4c9 (size before relaxing)
+ .debug_str     0x000000000000073e       0xc6 music.o
                                         0x243 (size before relaxing)
 
 .debug_loc
@@ -739,7 +740,7 @@ OUTPUT(/Users/thoreaukilbourne/Desktop/GBA/Game/rom/Game.elf elf32-littlearm)
 LOAD linker stubs
 
 .debug_loclists
-                0x0000000000000000     0x124c
+                0x0000000000000000     0x1300
  .debug_loclists
                 0x0000000000000000      0x297 SpritePositionFunctions.o
  .debug_loclists
@@ -749,12 +750,12 @@ LOAD linker stubs
  .debug_loclists
                 0x00000000000007d1      0x20d graphics.o
  .debug_loclists
-                0x00000000000009de      0x7fa main.o
+                0x00000000000009de      0x8ae main.o
  .debug_loclists
-                0x00000000000011d8       0x74 music.o
+                0x000000000000128c       0x74 music.o
 
 .debug_rnglists
-                0x0000000000000000      0x10d
+                0x0000000000000000       0xf7
  .debug_rnglists
                 0x0000000000000000       0x58 SpritePositionFunctions.o
  .debug_rnglists
@@ -764,6 +765,6 @@ LOAD linker stubs
  .debug_rnglists
                 0x000000000000009a       0x26 graphics.o
  .debug_rnglists
-                0x00000000000000c0       0x31 main.o
+                0x00000000000000c0       0x1b main.o
  .debug_rnglists
-                0x00000000000000f1       0x1c music.o
+                0x00000000000000db       0x1c music.o
