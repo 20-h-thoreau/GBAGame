@@ -37,7 +37,7 @@ void savescore(){
 void initleaderboard(){
    
     for(u8 x=0,y=0; y<5;++x){
-        leaderboard.name[y][x]='A';
+        leaderboard.name[y][x]=0;
         if (x==2){
             x=0xff;
             leaderboard.score[y]=0;
@@ -66,13 +66,13 @@ void leaderboardpreset(){
 void displayscoreboard(){
     char name[3];
     for(u8 y=0; y<5; ++y){
-        //if (leaderboard.name[y][0]!=0){
+        if (leaderboard.name[y][0]!=0){
             name[0]=leaderboard.name[y][0];
             name[1]=leaderboard.name[y][1];
             name[2]=leaderboard.name[y][2];
             displaytext(name, 3, (scorestartingsprite+(y*8)), scorestartingx ,scorestartingy+(y*12),1 );
             displaynumber(leaderboard.score[y], scorestartingx+32, scorestartingy+y*12, scorestartingsprite+3+y*8);
-        //}
+        }
     }
     
 }

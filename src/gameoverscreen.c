@@ -85,7 +85,7 @@ void gameoverscreen(void){
             
             if ((timer&0x7)==0){
                 
-                if (button==(0x03ff^(1<<b))){
+                if (  (button==(0x03ff^(1<<b))) || (button==(0x03ff^(1<<a))) || (button==(0x03ff^(1<<start))) ){
                     ++leterpointer;
                     if (leterpointer>=3){
                         newhighscore=false;

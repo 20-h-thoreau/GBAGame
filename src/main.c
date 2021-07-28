@@ -5,7 +5,7 @@
  u16 const  right = 0x04;
  u16 const  b = 0x01;
  u16 const  start = 0x03;
-
+ u16 const  a = 0x00;
 
  u8 const ScreenWidth=240;
  u8 const ScreenHieght=160;//these were orginally u8 constances

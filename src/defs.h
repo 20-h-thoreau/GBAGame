@@ -38,6 +38,7 @@ extern u16 const  up;
 extern u16 const  left;
 extern u16 const  right;
 extern u16 const  b;
+extern u16 const a;
 extern u16 const  start;
 
 extern u8 const ScreenWidth;
