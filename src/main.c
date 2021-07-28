@@ -22,6 +22,7 @@
 #include "gameoverscreen.h"
 #include "spritepositionfunctions.h"
 #include "music.h"
+#include "score.h"
 //#include "interupts.h" we will work on this later.
 
 #include "sprite_bin.h"
@@ -40,9 +41,6 @@
 
 u8 level;//this makes the enemy more likely to shoot
 u16 score;
-
-
-
 //sprite position functions
 	   
 // start screen will get ts own file:
@@ -104,6 +102,9 @@ int main(){
 	
 	//done with hardwareinit
 
+	
+	initleaderboard();
+	leaderboardpreset();
 	struct Ship Player;
 	struct Ship Enemy;
 	struct BulletAttribute Bullet;

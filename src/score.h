@@ -11,4 +11,6 @@
 #include <tonc_types.h>
 void displayscore(void);
 void savescore();
+void initleaderboard();
+void leaderboardpreset();
 #endif /* score_h */

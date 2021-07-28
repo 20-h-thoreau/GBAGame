@@ -14,6 +14,7 @@ main.o: /Users/thoreaukilbourne/Desktop/GBA/Game/src/main.c \
  /Users/thoreaukilbourne/Desktop/GBA/Game/src/gameoverscreen.h \
  /Users/thoreaukilbourne/Desktop/GBA/Game/src/spritepositionfunctions.h \
  /Users/thoreaukilbourne/Desktop/GBA/Game/src/music.h \
+ /Users/thoreaukilbourne/Desktop/GBA/Game/src/score.h \
  /Users/thoreaukilbourne/Desktop/GBA/Game/build/sprite_bin.h \
  /Users/thoreaukilbourne/Desktop/GBA/Game/build/numbers_bin.h \
  /Users/thoreaukilbourne/Desktop/GBA/Game/src/background.h \
@@ -37,6 +38,7 @@ main.o: /Users/thoreaukilbourne/Desktop/GBA/Game/src/main.c \
 /Users/thoreaukilbourne/Desktop/GBA/Game/src/gameoverscreen.h:
 /Users/thoreaukilbourne/Desktop/GBA/Game/src/spritepositionfunctions.h:
 /Users/thoreaukilbourne/Desktop/GBA/Game/src/music.h:
+/Users/thoreaukilbourne/Desktop/GBA/Game/src/score.h:
 /Users/thoreaukilbourne/Desktop/GBA/Game/build/sprite_bin.h:
 /Users/thoreaukilbourne/Desktop/GBA/Game/build/numbers_bin.h:
 /Users/thoreaukilbourne/Desktop/GBA/Game/src/background.h:
