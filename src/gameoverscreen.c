@@ -44,7 +44,7 @@ void gameoverscreen(void){
     u8 timer=0;
     bool pressstart=false;
 
-    u8 GameOver[]="GAME OVER";
+    char GameOver[]="GAME OVER";
     char message[11]="PRESS START";
 
     
@@ -68,8 +68,9 @@ void gameoverscreen(void){
             return;
         }
         ++timer;
-        
+        displayscoreboard();
         
     }
     
 }
+
