@@ -82,6 +82,7 @@ void gameoverscreen(void){
         button=*Button_Reg;
         
         if (newhighscore==true){
+            addunderline(leterpointer);
             
             if ((timer&0x7)==0){
                 
@@ -113,8 +114,8 @@ void gameoverscreen(void){
                 }
             
          
-            addtoleaderboard(leters[0],leters[1],leters[2]);
-            
+                addtoleaderboard(leters[0],leters[1],leters[2]);
+                
             }
         }
         else{

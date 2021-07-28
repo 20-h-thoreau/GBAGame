@@ -2,7 +2,7 @@
 
 void displaytext(char string[], u8 length, u16 StartingSprite, u8 StartingX, u8 StartingY, u8 Pallete){
     StartingSprite=StartingSprite*4;
-    for(u8 i=0; i<=length; ++i){
+    for(u8 i=0; i<length; ++i){
         //draw letter of string
         Obj_Attributes[StartingSprite+(i*4)]=0b0000000000000000+(StartingY);
         Obj_Attributes[StartingSprite+(i*4)+1]=0b0000000000000000+(StartingX+(i*8));

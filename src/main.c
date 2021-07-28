@@ -33,6 +33,8 @@
 #include "enemypallete_bin.h"
 #include "font_bin.h"
 #include "exsplosion_bin.h"
+#include "underline_bin.h"
+
 
 #include "background.h"
 
@@ -96,6 +98,7 @@ int main(){
 	tonccpy (&Mem_Tile[4][0x18],numbers_bin,numbers_bin_size);
 	tonccpy (&Mem_Tile[4][0x20],font_bin,font_bin_size);
 	
+	tonccpy(&Mem_Tile[4][0x1f], underline_bin,underline_bin_size);
 	
     struct ObjectAttribute SpriteAttribute={0b0010000000000000, 0b0000000000000000, 0b0000000010000000};
     tonccpy(Obj_Attributes,&SpriteAttribute,12);
