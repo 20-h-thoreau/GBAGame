@@ -1,6 +1,11 @@
 #include "Graphics.h"
 #include "posprintf.h"
 #include "graphics.h"
+#include "music.h"
+#include "score.h"
+#include <tonc_oam.h>
+
+
 extern u16 score;
 
 typedef struct Leaderboard{
@@ -32,7 +37,7 @@ void savescore(){
 void initleaderboard(){
    
     for(u8 x=0,y=0; y<5;++x){
-        leaderboard.name[y][x]=0;
+        leaderboard.name[y][x]='A';
         if (x==2){
             x=0xff;
             leaderboard.score[y]=0;
@@ -43,27 +48,71 @@ void initleaderboard(){
 
 }
 void leaderboardpreset(){
-    leaderboard.name[0][0]='z';
-    leaderboard.name[0][1]='a';
-    leaderboard.name[0][2]='k';
+    leaderboard.name[0][0]='Z';
+    leaderboard.name[0][1]='A';
+    leaderboard.name[0][2]='K';
     leaderboard.score[0]=3;
+    
+    leaderboard.name[1][0]='K';
+    leaderboard.name[1][1]='T';
+    leaderboard.name[1][2]='Y';
+    leaderboard.score[1]=2;
+    
 }
 #define scorestartingx 80
 #define scorestartingy 56
 #define scorestartingsprite 22
+
 void displayscoreboard(){
     char name[3];
     for(u8 y=0; y<5; ++y){
-        if (leaderboard.name[y][0]!=0){
-            name[0]=leaderboard.name[y][0]-32;
-            name[1]=leaderboard.name[y][1]-32;
-            name[2]=leaderboard.name[y][2]-32;
-            displaytext(name, 3, (scorestartingsprite+(y*8)), scorestartingx ,scorestartingy+(y*16),1 );
-            displaynumber(leaderboard.score[y], scorestartingx+32, scorestartingy+y*16, scorestartingsprite+3+y*8);
-        }
+        //if (leaderboard.name[y][0]!=0){
+            name[0]=leaderboard.name[y][0];
+            name[1]=leaderboard.name[y][1];
+            name[2]=leaderboard.name[y][2];
+            displaytext(name, 3, (scorestartingsprite+(y*8)), scorestartingx ,scorestartingy+(y*12),1 );
+            displaynumber(leaderboard.score[y], scorestartingx+32, scorestartingy+y*12, scorestartingsprite+3+y*8);
+        //}
     }
     
 }
 //(u16 number, u8 x, u8 y, u8 sprite)
 
 //displaytext(message, length, sprite, x,y,pallette);
+u8 boardpos=0xff;
+
+void addtoleaderboard(char l1, char l2,char l3){ //might want to check that boardpos has been initiliazed and itsnt ff
+       
+        leaderboard.name[boardpos][0]=l1;
+        leaderboard.name[boardpos][1]=l2;
+        leaderboard.name[boardpos][2]=l3;
+        leaderboard.score[boardpos]=score;
+}
+
+void openupboardposition(){
+    boardpos=leaderboardpositionfinder();
+    
+    for (u8 i=3; i>=boardpos; --i){
+        leaderboard.name[i+1][0]=leaderboard.name[i][0];
+        leaderboard.name[i+1][1]=leaderboard.name[i][1];
+        leaderboard.name[i+1][2]=leaderboard.name[i][2];
+        leaderboard.score[i+1]=leaderboard.score[i];
+    }
+}
+
+
+u8 leaderboardpositionfinder(){
+    for(u8 i=3; i>=0; --i){
+        if (leaderboard.score[i]>score){
+            return (i+1);
+        }
+    }
+    return 0;
+}
+
+bool checkforhighscore(){
+    if(score>=leaderboard.score[4]){
+        return true;
+    }
+    return false;
+}

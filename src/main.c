@@ -74,10 +74,13 @@ int main(){
 	bool openfire=false;
 	u8 level=startinglevel;
 	initilizebuffervariables();
+	initleaderboard();
+	leaderboardpreset();
     vsync();
 	fillbuffer();
 	switchoutdma();
 	initmusicregisters();
+	
 	
 	OAM_CLEAR();
     DisplayController=0x1001;
@@ -103,8 +106,8 @@ int main(){
 	//done with hardwareinit
 
 	
-	initleaderboard();
-	leaderboardpreset();
+
+	
 	struct Ship Player;
 	struct Ship Enemy;
 	struct BulletAttribute Bullet;

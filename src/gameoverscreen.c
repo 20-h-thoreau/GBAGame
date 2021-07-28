@@ -6,6 +6,8 @@
 #include "music.h"
 #include "score.h"
 
+extern u16 score;
+
 void deathanimation(bool playerhit, bool enemyhit,u16 playerx, u16 playery, u8 playerangle, u16 enemyx, u16 enemyy, u8 enemyangle){
 
     for (u8 timer=0,animationcounter=0; animationcounter<4;++timer){
@@ -38,9 +40,12 @@ void deathanimation(bool playerhit, bool enemyhit,u16 playerx, u16 playery, u8 p
 
 void gameoverscreen(void){
     
-
+    bool newhighscore=checkforhighscore();
+    if (newhighscore==true){
+        openupboardposition();
+    }
     bool startpressed=false;
-    vu16 button=0xff;
+    vu16 button=0xffff;
     u8 timer=0;
     bool pressstart=false;
 
@@ -48,11 +53,22 @@ void gameoverscreen(void){
     char message[11]="PRESS START";
 
     
+    u8 leters[3];
+    leters[0]='A';
+    leters[1]='A';
+    leters[2]='A';
+    
+    button=0xffff;
+    u8 leterpointer=0;
+   
+        
     while (startpressed==false){
+        
         vsync();
         fillbuffer();
         switchoutdma();
         OAM_CLEAR();
+        displayscoreboard();
         displaytext(GameOver, 9, 0, 80,32,01);
         
         if ((timer&0x1f)==0){
@@ -62,15 +78,62 @@ void gameoverscreen(void){
             displaytext(message, 10, 10, 130,130,01);
         }
         qran_range(0,0xffff);
-        button=*Button_Reg & 0x03ff;
-        if (button==((((0xffff)^(1<<start))) &0x03ff )){
-            startpressed=true;
-            return;
+        
+        button=*Button_Reg;
+        
+        if (newhighscore==true){
+            
+            if ((timer&0x7)==0){
+                
+                if (button==(0x03ff^(1<<b))){
+                    ++leterpointer;
+                    if (leterpointer>=3){
+                        newhighscore=false;
+                    }
+                }
+                else{
+                    if (button==(0x03ff^(1<<down))){
+                        ++leters[leterpointer];
+                        if (leters[leterpointer]>0x52){
+                            leters[leterpointer]=0x41;
+                        }
+                        
+                    }
+                    else{
+                        if (button==(0x03ff^(1<<up))){
+                            --leters[leterpointer];
+                         
+                            if(leters[leterpointer]<0x41){
+                                leters[leterpointer]=0x5a;
+                            }
+                        }
+                    }
+
+            
+                }
+            
+         
+            addtoleaderboard(leters[0],leters[1],leters[2]);
+            
+            }
         }
+        else{
+            if (button==((((0x03ff)^(1<<start))) )){
+                startpressed=true;
+            }
+        }
+        
+            
+        
+    
+
         ++timer;
-        displayscoreboard();
+
+        
         
     }
+    return;
     
 }
+
 
