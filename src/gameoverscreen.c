@@ -4,6 +4,7 @@
 #include "defs.h"
 #include "Graphics.h"
 #include "music.h"
+#include "score.h"
 
 void deathanimation(bool playerhit, bool enemyhit,u16 playerx, u16 playery, u8 playerangle, u16 enemyx, u16 enemyy, u8 enemyangle){
 
@@ -25,12 +26,12 @@ void deathanimation(bool playerhit, bool enemyhit,u16 playerx, u16 playery, u8 p
         
         
         if(enemyhit==false){
-            createship(enemyx,enemyy,33,enemyangle,false);
+            createship(enemyx,enemyy,8,enemyangle,false);
         }
         else{
-            createship(enemyx,enemyy,33,(8+animationcounter),true);//this can be changed to false once we fix the problem with the pallete generation
+            createship(enemyx,enemyy,8,(8+animationcounter),true);//this can be changed to false once we fix the problem with the pallete generation
         }
-    
+        displayscore();
     }
     
 }

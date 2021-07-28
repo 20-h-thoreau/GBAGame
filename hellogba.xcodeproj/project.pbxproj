@@ -32,12 +32,16 @@
 		3CEF4F9E26AE8594002B2AFA /* gba_bios.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = gba_bios.c; path = src/gba_bios.c; sourceTree = "<group>"; };
 		3CEF4F9F26AE8B1B002B2AFA /* interrupts.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = interrupts.h; sourceTree = "<group>"; };
 		3CEF4FA026AE8B1B002B2AFA /* interrupts.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = interrupts.c; sourceTree = "<group>"; };
+		3CEF4FA126B0DE55002B2AFA /* score.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = score.h; path = src/score.h; sourceTree = "<group>"; };
+		3CEF4FA226B0DE55002B2AFA /* score.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = score.c; path = src/score.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
 		065326E62696ABAB001BAABA = {
 			isa = PBXGroup;
 			children = (
+				3CEF4FA126B0DE55002B2AFA /* score.h */,
+				3CEF4FA226B0DE55002B2AFA /* score.c */,
 				3CEF4F9F26AE8B1B002B2AFA /* interrupts.h */,
 				3CEF4FA026AE8B1B002B2AFA /* interrupts.c */,
 				3CEF4F9D26AE8594002B2AFA /* gba_bios.h */,

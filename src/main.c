@@ -25,6 +25,7 @@
 //#include "interupts.h" we will work on this later.
 
 #include "sprite_bin.h"
+#include "numbers_bin.h"
 #include "background.h"
 #include "bullet_bin.h"
 #include "playerpallete_bin.h"
@@ -38,7 +39,8 @@
 
 
 u8 level;//this makes the enemy more likely to shoot
-u32 score;
+u16 score;
+
 
 
 //sprite position functions
@@ -90,7 +92,10 @@ int main(){
     tonccpy(&Mem_Tile[4][4],bullet_bin,bullet_bin_size);
 	tonccpy(&Mem_Tile[4][5],exsplosion_bin,exsplosion_bin_size);
     
+	tonccpy (&Mem_Tile[4][0x18],numbers_bin,numbers_bin_size);
 	tonccpy (&Mem_Tile[4][0x20],font_bin,font_bin_size);
+	
+	
     struct ObjectAttribute SpriteAttribute={0b0010000000000000, 0b0000000000000000, 0b0000000010000000};
     tonccpy(Obj_Attributes,&SpriteAttribute,12);
 
@@ -283,11 +288,13 @@ int main(){
 					Enemy.hit=true;
 					Enemy.button=0xffff;
 					Enemy.bulletactive=0;
+					++score;
 					
 				}
 				
 				if ( (ABS(Player.x-Enemy.x))<0x800  && (ABS(Player.y-Enemy.y))<0x800 && Enemy.hit==false){
 					Player.hit=true;
+					Enemy.hit=true;
 					
 					gameover=true;
 					
@@ -325,12 +332,12 @@ int main(){
 			}
 			
 			if (!Enemy.hit) {
-				createship(Enemy.x,Enemy.y,32,Enemy.angle,Enemy.ally);
+				createship(Enemy.x,Enemy.y,8,Enemy.angle,Enemy.ally);
 			}
 			else{
 				
 				if (exsplosion<0x40){ //exsplosion will incriment each frame
-					createship(Enemy.x,Enemy.y,32,(8+(exsplosion>>4)),true);//this can be changed to false once we fix the problem with the pallete generation, also exsplotion might need bitshifitn 7 times not 8
+					createship(Enemy.x,Enemy.y,8,(8+(exsplosion>>4)),true);//this can be changed to false once we fix the problem with the pallete generation, also exsplotion might need bitshifitn 7 times not 8
 					
 				}
 				else{
@@ -372,15 +379,15 @@ int main(){
 				Bullet1.angle=Enemy.angle;
 				Bullet1.BulletTimer=0;
 				
-				createbullet(Enemy.x,Enemy.y,33,Enemy.angle,Enemy.ally);
+				createbullet(Enemy.x,Enemy.y,9,Enemy.angle,Enemy.ally);
 				Enemy.bulletactive=Enemy.bulletactive | 0x80;
 			}
 			else{
 				if ((Enemy.bulletactive&0x80)!=0){
-				createbullet(Bullet1.x,Bullet1.y,33,Bullet1.angle,false);
+				createbullet(Bullet1.x,Bullet1.y,9,Bullet1.angle,false);
 				}
 			}
-			
+			displayscore();
 			
 			
 			
