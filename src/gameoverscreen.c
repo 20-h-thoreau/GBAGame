@@ -53,7 +53,7 @@ void gameoverscreen(void){
         fillbuffer();
         switchoutdma();
         OAM_CLEAR();
-        displaytext(GameOver, 9, 0, 80,40,01);
+        displaytext(GameOver, 9, 0, 80,32,01);
         
         if ((timer&0x1f)==0){
             pressstart=(!pressstart); //this flickers the press start text

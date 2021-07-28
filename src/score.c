@@ -48,8 +48,8 @@ void leaderboardpreset(){
     leaderboard.name[0][2]='k';
     leaderboard.score[0]=3;
 }
-#define scorestartingx 32
-#define scorestartingy 64
+#define scorestartingx 80
+#define scorestartingy 56
 #define scorestartingsprite 22
 void displayscoreboard(){
     char name[3];
