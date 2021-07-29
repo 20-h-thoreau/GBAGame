@@ -633,7 +633,7 @@ Linker script and memory map
  .debug_abbrev  0x0000000000000c52      0x2e3 score.o
  .debug_abbrev  0x0000000000000f35       0x14 posprintf.o
 
-.debug_line     0x0000000000000000     0x1ce9
+.debug_line     0x0000000000000000     0x1cb3
  *(.debug_line)
  .debug_line    0x0000000000000000      0x233 SpritePositionFunctions.o
  .debug_line    0x0000000000000233       0x5a background.o
@@ -641,9 +641,9 @@ Linker script and memory map
  .debug_line    0x0000000000000586      0x381 gameoverscreen.o
  .debug_line    0x0000000000000907      0x1ce graphics.o
  .debug_line    0x0000000000000ad5      0xa01 main.o
- .debug_line    0x00000000000014d6      0x295 music.o
- .debug_line    0x000000000000176b      0x408 score.o
- .debug_line    0x0000000000001b73      0x176 posprintf.o
+ .debug_line    0x00000000000014d6      0x25f music.o
+ .debug_line    0x0000000000001735      0x408 score.o
+ .debug_line    0x0000000000001b3d      0x176 posprintf.o
 
 .debug_frame    0x0000000000000000      0x360
  *(.debug_frame)

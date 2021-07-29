@@ -1,5 +1,5 @@
 #include "music.h"
-#include "../build/skytheme.h" //not sure why it has trouble with the music folder.
+#include "skytheme.h" //not sure why it has trouble with the music folder.
 #include "soundbank_bin.h"
 #include <tonc_memmap.h>
 #include <tonc_memdef.h>

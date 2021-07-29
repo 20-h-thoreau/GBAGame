@@ -95,7 +95,7 @@ void gameoverscreen(void){
                 else{
                     if (button==(0x03ff^(1<<down))){
                         ++leters[leterpointer];
-                        if (leters[leterpointer]>0x52){
+                        if (leters[leterpointer]>0x5a){
                             leters[leterpointer]=0x41;
                         }
                         
