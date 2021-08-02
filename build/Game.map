@@ -31,6 +31,11 @@ Discarded input sections
  .text          0x0000000000000000        0x0 bullet.bin.o
  .data          0x0000000000000000        0x0 bullet.bin.o
  .bss           0x0000000000000000        0x0 bullet.bin.o
+ .text          0x0000000000000000        0x0 enemybullet.bin.o
+ .data          0x0000000000000000        0x0 enemybullet.bin.o
+ .bss           0x0000000000000000        0x0 enemybullet.bin.o
+ .rodata.enemybullet_bin
+                0x0000000000000000       0x20 enemybullet.bin.o
  .text          0x0000000000000000        0x0 enemypallete.bin.o
  .data          0x0000000000000000        0x0 enemypallete.bin.o
  .bss           0x0000000000000000        0x0 enemypallete.bin.o
@@ -61,7 +66,7 @@ Discarded input sections
  .data          0x0000000000000000        0x0 soundbank.bin.o
  .bss           0x0000000000000000        0x0 soundbank.bin.o
  .rodata.soundbank_bin
-                0x0000000000000000   0x44a4d2 soundbank.bin.o
+                0x0000000000000000   0x46a53a soundbank.bin.o
  .data          0x0000000000000000        0x0 SpritePositionFunctions.o
  .bss           0x0000000000000000        0x0 SpritePositionFunctions.o
  .text          0x0000000000000000        0x0 background.o
@@ -184,15 +189,15 @@ Linker script and memory map
  .text          0x0000000008001208      0x2b0 score.o
                 0x0000000008001208                displayscore
                 0x000000000800123c                displaynumber
-                0x0000000008001270                savescore
-                0x0000000008001274                initleaderboard
-                0x00000000080012bc                leaderboardpreset
-                0x00000000080012e4                displayscoreboard
-                0x0000000008001388                addtoleaderboard
-                0x00000000080013bc                addunderline
-                0x00000000080013f0                openupboardposition
-                0x000000000800146c                leaderboardpositionfinder
-                0x00000000080014a0                checkforhighscore
+                0x0000000008001270                initleaderboard
+                0x00000000080012b8                leaderboardpreset
+                0x00000000080012e0                displayscoreboard
+                0x0000000008001384                addtoleaderboard
+                0x00000000080013b8                addunderline
+                0x00000000080013ec                openupboardposition
+                0x0000000008001468                leaderboardpositionfinder
+                0x000000000800149c                checkforhighscore
+                0x00000000080014b4                savescore
  .text          0x00000000080014b8      0x264 posprintf.o
                 0x00000000080014b8                posprintf
  .text          0x000000000800171c      0x1c4 /opt/devkitpro/libtonc/lib/libtonc.a(tonc_core.o)
@@ -609,17 +614,17 @@ Linker script and memory map
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x0000000000000000     0x25f7
+.debug_info     0x0000000000000000     0x25f8
  *(.debug_info)
  .debug_info    0x0000000000000000      0x218 SpritePositionFunctions.o
  .debug_info    0x0000000000000218       0xa2 background.o
  .debug_info    0x00000000000002ba      0x4ca enemy.o
  .debug_info    0x0000000000000784      0x68a gameoverscreen.o
  .debug_info    0x0000000000000e0e      0x267 graphics.o
- .debug_info    0x0000000000001075      0xd62 main.o
- .debug_info    0x0000000000001dd7      0x272 music.o
- .debug_info    0x0000000000002049      0x589 score.o
- .debug_info    0x00000000000025d2       0x25 posprintf.o
+ .debug_info    0x0000000000001075      0xd63 main.o
+ .debug_info    0x0000000000001dd8      0x272 music.o
+ .debug_info    0x000000000000204a      0x589 score.o
+ .debug_info    0x00000000000025d3       0x25 posprintf.o
 
 .debug_abbrev   0x0000000000000000      0xf49
  *(.debug_abbrev)
@@ -633,7 +638,7 @@ Linker script and memory map
  .debug_abbrev  0x0000000000000c52      0x2e3 score.o
  .debug_abbrev  0x0000000000000f35       0x14 posprintf.o
 
-.debug_line     0x0000000000000000     0x1cb3
+.debug_line     0x0000000000000000     0x1cb4
  *(.debug_line)
  .debug_line    0x0000000000000000      0x233 SpritePositionFunctions.o
  .debug_line    0x0000000000000233       0x5a background.o
@@ -642,8 +647,8 @@ Linker script and memory map
  .debug_line    0x0000000000000907      0x1ce graphics.o
  .debug_line    0x0000000000000ad5      0xa01 main.o
  .debug_line    0x00000000000014d6      0x25f music.o
- .debug_line    0x0000000000001735      0x408 score.o
- .debug_line    0x0000000000001b3d      0x176 posprintf.o
+ .debug_line    0x0000000000001735      0x409 score.o
+ .debug_line    0x0000000000001b3e      0x176 posprintf.o
 
 .debug_frame    0x0000000000000000      0x360
  *(.debug_frame)
@@ -713,59 +718,61 @@ Linker script and memory map
  .ARM.attributes
                 0x0000000000000066       0x14 bullet.bin.o
  .ARM.attributes
-                0x000000000000007a       0x14 enemypallete.bin.o
+                0x000000000000007a       0x14 enemybullet.bin.o
  .ARM.attributes
-                0x000000000000008e       0x14 enemypalletetrash.bin.o
+                0x000000000000008e       0x14 enemypallete.bin.o
  .ARM.attributes
-                0x00000000000000a2       0x14 exsplosion.bin.o
+                0x00000000000000a2       0x14 enemypalletetrash.bin.o
  .ARM.attributes
-                0x00000000000000b6       0x14 font.bin.o
+                0x00000000000000b6       0x14 exsplosion.bin.o
  .ARM.attributes
-                0x00000000000000ca       0x14 numbers.bin.o
+                0x00000000000000ca       0x14 font.bin.o
  .ARM.attributes
-                0x00000000000000de       0x14 playerpallete.bin.o
+                0x00000000000000de       0x14 numbers.bin.o
  .ARM.attributes
-                0x00000000000000f2       0x14 sprite.bin.o
+                0x00000000000000f2       0x14 playerpallete.bin.o
  .ARM.attributes
-                0x0000000000000106       0x14 underline.bin.o
+                0x0000000000000106       0x14 sprite.bin.o
  .ARM.attributes
-                0x000000000000011a       0x14 soundbank.bin.o
+                0x000000000000011a       0x14 underline.bin.o
  .ARM.attributes
-                0x000000000000012e       0x2a SpritePositionFunctions.o
+                0x000000000000012e       0x14 soundbank.bin.o
  .ARM.attributes
-                0x0000000000000158       0x30 background.o
+                0x0000000000000142       0x2a SpritePositionFunctions.o
  .ARM.attributes
-                0x0000000000000188       0x2a enemy.o
+                0x000000000000016c       0x30 background.o
  .ARM.attributes
-                0x00000000000001b2       0x2a gameoverscreen.o
+                0x000000000000019c       0x2a enemy.o
  .ARM.attributes
-                0x00000000000001dc       0x2a graphics.o
+                0x00000000000001c6       0x2a gameoverscreen.o
  .ARM.attributes
-                0x0000000000000206       0x30 interrupts.o
+                0x00000000000001f0       0x2a graphics.o
  .ARM.attributes
-                0x0000000000000236       0x2a main.o
+                0x000000000000021a       0x30 interrupts.o
  .ARM.attributes
-                0x0000000000000260       0x2a music.o
+                0x000000000000024a       0x2a main.o
  .ARM.attributes
-                0x000000000000028a       0x2a score.o
+                0x0000000000000274       0x2a music.o
  .ARM.attributes
-                0x00000000000002b4       0x1a posprintf.o
+                0x000000000000029e       0x2a score.o
  .ARM.attributes
-                0x00000000000002ce       0x2a /opt/devkitpro/libtonc/lib/libtonc.a(tonc_core.o)
+                0x00000000000002c8       0x1a posprintf.o
  .ARM.attributes
-                0x00000000000002f8       0x1a /opt/devkitpro/libtonc/lib/libtonc.a(tonc_bios.o)
+                0x00000000000002e2       0x2a /opt/devkitpro/libtonc/lib/libtonc.a(tonc_core.o)
  .ARM.attributes
-                0x0000000000000312       0x1a /opt/devkitpro/libtonc/lib/libtonc.a(tonc_memset.o)
+                0x000000000000030c       0x1a /opt/devkitpro/libtonc/lib/libtonc.a(tonc_bios.o)
  .ARM.attributes
-                0x000000000000032c       0x2a /opt/devkitpro/devkitARM/bin/../lib/gcc/arm-none-eabi/11.1.0/../../../../arm-none-eabi/lib/thumb/libg.a(lib_a-init.o)
+                0x0000000000000326       0x1a /opt/devkitpro/libtonc/lib/libtonc.a(tonc_memset.o)
  .ARM.attributes
-                0x0000000000000356       0x2a /opt/devkitpro/devkitARM/bin/../lib/gcc/arm-none-eabi/11.1.0/../../../../arm-none-eabi/lib/thumb/libg.a(lib_a-memset.o)
+                0x0000000000000340       0x2a /opt/devkitpro/devkitARM/bin/../lib/gcc/arm-none-eabi/11.1.0/../../../../arm-none-eabi/lib/thumb/libg.a(lib_a-init.o)
  .ARM.attributes
-                0x0000000000000380       0x30 /opt/devkitpro/devkitARM/bin/../lib/gcc/arm-none-eabi/11.1.0/../../../../arm-none-eabi/lib/thumb/libsysbase.a(malloc_vars.o)
+                0x000000000000036a       0x2a /opt/devkitpro/devkitARM/bin/../lib/gcc/arm-none-eabi/11.1.0/../../../../arm-none-eabi/lib/thumb/libg.a(lib_a-memset.o)
  .ARM.attributes
-                0x00000000000003b0       0x30 /opt/devkitpro/devkitARM/bin/../lib/gcc/arm-none-eabi/11.1.0/thumb/crtend.o
+                0x0000000000000394       0x30 /opt/devkitpro/devkitARM/bin/../lib/gcc/arm-none-eabi/11.1.0/../../../../arm-none-eabi/lib/thumb/libsysbase.a(malloc_vars.o)
  .ARM.attributes
-                0x00000000000003e0       0x1c /opt/devkitpro/devkitARM/bin/../lib/gcc/arm-none-eabi/11.1.0/thumb/crtn.o
+                0x00000000000003c4       0x30 /opt/devkitpro/devkitARM/bin/../lib/gcc/arm-none-eabi/11.1.0/thumb/crtend.o
+ .ARM.attributes
+                0x00000000000003f4       0x1c /opt/devkitpro/devkitARM/bin/../lib/gcc/arm-none-eabi/11.1.0/thumb/crtn.o
 
 /DISCARD/
  *(.note.GNU-stack)
@@ -773,6 +780,7 @@ LOAD /opt/devkitpro/devkitARM/bin/../lib/gcc/arm-none-eabi/11.1.0/../../../../ar
 LOAD /opt/devkitpro/devkitARM/bin/../lib/gcc/arm-none-eabi/11.1.0/thumb/crti.o
 LOAD /opt/devkitpro/devkitARM/bin/../lib/gcc/arm-none-eabi/11.1.0/thumb/crtbegin.o
 LOAD bullet.bin.o
+LOAD enemybullet.bin.o
 LOAD enemypallete.bin.o
 LOAD enemypalletetrash.bin.o
 LOAD exsplosion.bin.o

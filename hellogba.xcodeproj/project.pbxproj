@@ -8,7 +8,7 @@
 
 /* Begin PBXFileReference section */
 		065326F22696AC60001BAABA /* makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = makefile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.make; };
-		065326F32696ACFC001BAABA /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = main.c; path = src/main.c; sourceTree = SOURCE_ROOT; usesTabs = 1; xcLanguageSpecificationIdentifier = xcode.lang.c; };
+		065326F32696ACFC001BAABA /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = main.c; path = src/main.c; sourceTree = SOURCE_ROOT; usesTabs = 1; };
 		065326F52697C5FE001BAABA /* sprite.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = sprite.h; path = src/sprite.h; sourceTree = "<group>"; };
 		065326F62697C5FE001BAABA /* sprite.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = sprite.c; path = src/sprite.c; sourceTree = "<group>"; };
 		065326F7269A5BC4001BAABA /* background.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = background.h; path = src/background.h; sourceTree = "<group>"; };

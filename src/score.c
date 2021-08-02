@@ -30,10 +30,6 @@ void displaynumber(u16 number, u8 x, u8 y, u8 sprite){
 
 
 
-void savescore(){
-    
-}
-
 void initleaderboard(){
    
     for(u8 x=0,y=0; y<5;++x){
@@ -124,4 +120,8 @@ bool checkforhighscore(){
         return true;
     }
     return false;
+}
+
+void savescore(){
+    
 }

@@ -88,7 +88,7 @@ int main(){
     DisplayController=0x1001;
     tonccpy(&Mem_Tile[4][1],sprite_bin,sprite_bin_size);
     tonccpy(Mem_Obj_Palette,playerpallete_bin,playerpallete_bin_size);
-	tonccpy(Mem_Obj_Palette+16,enemypallete_bin,enemypallete_bin_size-16);
+	tonccpy(Mem_Obj_Palette+16,enemypallete_bin,enemypallete_bin_size);
 	tonccpy(BGPaletteMem,bgPal,bgPalLen);
     //tonccpy(Mem_Obj_Palette[16],enemyPal,enemyPalLen);
     
