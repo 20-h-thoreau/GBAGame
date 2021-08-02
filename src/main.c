@@ -299,8 +299,15 @@ int main(){
 					Enemy.button=0xffff;
 					Enemy.bulletactive=0;
 					
+					/*if ( (ABS(Player.x-Enemy.x))<0x400  && (ABS(Player.y-Enemy.y))<0x400 && Enemy.hit==false){
+						gameover=true; //this ends the game in the event of a collision even after being shot
+						Enemy.hit=true;
+						Player.hit=true;
+						}
+					 else{*/
 					
-					++score;
+					
+					++score; //}
 					
 				}
 				
@@ -318,7 +325,8 @@ int main(){
 					gameover=true; //this ends the game in the event of a collision
 					Enemy.hit=true;
 					Player.hit=true;
-					}*/
+					}
+				 else{*/
 				
 			
 
