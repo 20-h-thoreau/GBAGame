@@ -4,7 +4,7 @@
 #include "music.h"
 #include "score.h"
 #include <tonc_oam.h>
-
+#include <tonc_core.h>
 
 extern u16 score;
 
@@ -123,5 +123,60 @@ bool checkforhighscore(){
 }
 
 void savescore(){
-    
+    char save[4]={'S','A','V','E'};
+    sram_memcpy((vu8 *)0x0e000000, &save, 4);//this tells us this is save data and not junk.
+    sram_memcpy((vu8 *)0x0e000004, &leaderboard, 25);
+}
+
+
+void loadscore(){
+    sram_memcpy(&leaderboard, (vu8 *)0x0e000004, 25);
+}
+
+bool verifysave(){
+    char test[4]=("SAVE");
+    return sram_memcmp ((vu8 *)0x0e000000,&test,4);
+    /*sram_memcpy(&test, (vu8 *)0x0e000000,4 );
+    switch (test[0]){
+        case 'S':
+            break;
+        default:
+            return false;
+    }
+    switch (test[1]){
+        case 'A':
+            break;
+        default:
+            return false;
+    }
+    switch (test[2]){
+        case 'V':
+            break;
+        default:
+            return false;
+    }
+    switch (test[3]){
+        case 'E':
+            return true;
+        default:
+            return false;
+    }*/
+   
+}
+
+
+//thank you to pinobatch for these two functions
+void sram_memcpy(volatile unsigned char *dst, const volatile unsigned char *src, size_t size) {
+  for (;size > 0;--size) *dst++ = *src++;
+}
+
+//IWRAM_CODE, I have modified this to just slightly tell if equall, and not care about diference
+bool sram_memcmp(const volatile unsigned char *dst, const volatile unsigned char *src, size_t size) {
+  for (;size > 0;--size) {
+
+    unsigned int a = *dst++;
+    unsigned int b = *src++;
+    if (a != b) return false;
+  }
+  return true;
 }

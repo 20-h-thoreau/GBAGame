@@ -63,7 +63,6 @@ static inline void waitforstart(){
 }
     
 
-
         
 
 
@@ -72,13 +71,30 @@ u32 xyout; //this is jsut used to get x y out of functions where it is stored to
 u8 exsplosion=0;
 
 int main(){
+	//testing saveing
 
+	
+	
+	
+	
+	
+	
 	u16 bulletwaittimer=0;
 	bool openfire=false;
 	u8 level=startinglevel;
 	initilizebuffervariables();
+	
 	initleaderboard();
-	leaderboardpreset();
+	
+	if (verifysave()){
+		loadscore();
+	}
+	else{
+		leaderboardpreset();
+	}
+
+	
+	
     vsync();
 	fillbuffer();
 	switchoutdma();

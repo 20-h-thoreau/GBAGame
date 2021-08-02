@@ -14,4 +14,8 @@ bool checkforhighscore();
 void openupboardposition();
 void addunderline(u8 leterpointer);
 void savescore();
+void loadscore();
+bool verifysave();
+void sram_memcpy(volatile unsigned char *dst, const volatile unsigned char *src, size_t size);
+bool sram_memcmp(const volatile unsigned char *dst, const volatile unsigned char *src, size_t size);
 #endif /* score_h */

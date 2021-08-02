@@ -41,6 +41,7 @@ void deathanimation(bool playerhit, bool enemyhit,u16 playerx, u16 playery, u8 p
 void gameoverscreen(void){
     
     bool newhighscore=checkforhighscore();
+    bool save=newhighscore;
     if (newhighscore==true){
         openupboardposition();
     }
@@ -132,6 +133,9 @@ void gameoverscreen(void){
 
         
         
+    }
+    if(save==true){
+        savescore();
     }
     return;
     
