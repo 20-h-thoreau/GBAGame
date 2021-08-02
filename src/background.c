@@ -12,7 +12,7 @@ const unsigned short bgTiles[64] __attribute__((aligned(4)))=
 
 const unsigned short bgPal[4] __attribute__((aligned(4)))=
 {
-    0x0000,0x0000,0x0000,0x0000,
+    0xff00,0x3004,0x3004,0x3004,
 };
 
 const unsigned short checkerBg[1024] =

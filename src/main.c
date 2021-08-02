@@ -25,7 +25,8 @@
 #include "score.h"
 //#include "interupts.h" we will work on this later.
 
-#include "sprite_bin.h"
+#include "ship_bin.h"
+#include "shipprop_bin.h"
 #include "numbers_bin.h"
 #include "background.h"
 #include "bullet_bin.h"
@@ -86,7 +87,9 @@ int main(){
 	
 	OAM_CLEAR();
     DisplayController=0x1001;
-    tonccpy(&Mem_Tile[4][1],sprite_bin,sprite_bin_size);
+    tonccpy(&Mem_Tile[4][1],ship_bin,ship_bin_size);
+	tonccpy(&Mem_Tile[4][0x41],shipprop_bin,shipprop_bin_size);
+	
     tonccpy(Mem_Obj_Palette,playerpallete_bin,playerpallete_bin_size);
 	tonccpy(Mem_Obj_Palette+16,enemypallete_bin,enemypallete_bin_size);
 	tonccpy(BGPaletteMem,bgPal,bgPalLen);
@@ -295,6 +298,8 @@ int main(){
 					Enemy.hit=true;
 					Enemy.button=0xffff;
 					Enemy.bulletactive=0;
+					
+					
 					++score;
 					
 				}
@@ -309,16 +314,16 @@ int main(){
 			
 			
 		  
-				if ( (ABS(Player.x-Enemy.x))<0x400  && (ABS(Player.y-Enemy.y))<0x400 && Enemy.hit==false){
+				/*if ( (ABS(Player.x-Enemy.x))<0x400  && (ABS(Player.y-Enemy.y))<0x400 && Enemy.hit==false){
 					gameover=true; //this ends the game in the event of a collision
 					Enemy.hit=true;
 					Player.hit=true;
-					}
+					}*/
 				
 			
 
 			
-				if ( (((ABS(Bullet1.x-Player.x))<0x300  && (ABS(Bullet1.y-Player.y))<0x300  )) && Enemy.bulletactive!=0){
+				if ( (((ABS(Bullet1.x-Player.x))<0x400  && (ABS(Bullet1.y-Player.y))<0x400  )) && Enemy.bulletactive!=0){
 					Player.hit=true;
 					gameover=true;
 				}
@@ -332,14 +337,26 @@ int main(){
 			switchoutdma();
 			OAM_CLEAR();
 
-			
-			
-			if (!Player.hit){
-				createship(Player.x,Player.y,0,Player.angle,Player.ally);
+			int directionadder=0;
+			switch (Player.turntimer&0x4){
+				case 0x00:
+					directionadder=0x80;
+					break;
 			}
 			
+			if (!Player.hit){
+				createship(Player.x,Player.y,0,Player.angle+directionadder,Player.ally);
+			}
+			directionadder=0;
+			switch (Enemy.turntimer&0x4){
+				case 0x00:
+					directionadder=0x80;
+					break;
+			}
+			
+			
 			if (!Enemy.hit) {
-				createship(Enemy.x,Enemy.y,8,Enemy.angle,Enemy.ally);
+				createship(Enemy.x,Enemy.y,8,Enemy.angle+directionadder,Enemy.ally);
 			}
 			else{
 				
