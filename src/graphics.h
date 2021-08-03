@@ -15,6 +15,7 @@ inline void vsync()
 {
     while (Reg_VCount >= 160);
     while (Reg_VCount < 160);
+    
 }
 
 void createbullet(u16 x, u16 y, u16 sprite, u8 direction, bool ally);

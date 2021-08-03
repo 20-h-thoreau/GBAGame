@@ -19,6 +19,7 @@ void deathanimation(bool playerhit, bool enemyhit,u16 playerx, u16 playery, u8 p
         fillbuffer();
         switchoutdma();
         OAM_CLEAR();
+        
         if (playerhit==false){
             createship(playerx,playery,0,playerangle,true);
         }
@@ -69,6 +70,7 @@ void gameoverscreen(void){
         fillbuffer();
         switchoutdma();
         OAM_CLEAR();
+
         displayscoreboard();
         displaytext(GameOver, 9, 0, 80,32,01);
         

@@ -16,8 +16,9 @@ superfamiconv tiles -i sprites/numbers.png -B 4 -D -p data/playerpallete.bin -M 
 
 #music
 
-sox music/skytheme.wav build/skytheme-build.wav rate 18157
-sox build/skytheme-build.wav -b 8 -e signed build/skytheme.raw Channels 1
+
+sox music/skytheme.wav -b 8  build/skytheme-build.wav Channels 1 rate 18157
+sox build/skytheme-build.wav -e signed build/skytheme.raw
 cd build
 raw2gba skytheme.raw
 cd ../

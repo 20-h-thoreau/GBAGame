@@ -23,6 +23,7 @@
 #include "spritepositionfunctions.h"
 #include "music.h"
 #include "score.h"
+#include "bg.h"
 //#include "interupts.h" we will work on this later.
 
 #include "ship_bin.h"
@@ -99,10 +100,11 @@ int main(){
 	fillbuffer();
 	switchoutdma();
 	initmusicregisters();
+	scrollbackground();
 	
 	
 	OAM_CLEAR();
-    DisplayController=0x1001;
+    DisplayController=0x1000;
     tonccpy(&Mem_Tile[4][1],ship_bin,ship_bin_size);
 	tonccpy(&Mem_Tile[4][0x41],shipprop_bin,shipprop_bin_size);
 	
@@ -122,7 +124,7 @@ int main(){
     struct ObjectAttribute SpriteAttribute={0b0010000000000000, 0b0000000000000000, 0b0000000010000000};
     tonccpy(Obj_Attributes,&SpriteAttribute,12);
 
-	
+	initbackground();
 	
 	
 	//done with hardwareinit
@@ -360,6 +362,7 @@ int main(){
 			fillbuffer();
 			switchoutdma();
 			OAM_CLEAR();
+			scrollbackground();
 
 			int directionadder=0;
 			switch (Player.turntimer&0x4){
@@ -483,6 +486,7 @@ void startscreen(void){
 		fillbuffer();
 		switchoutdma();
 		OAM_CLEAR();
+		scrollbackground();
 		if ((timer&0x1f)==0){
 			pressstart=(!pressstart); //this flickers the press start text
 		}
