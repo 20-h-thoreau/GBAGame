@@ -13,6 +13,7 @@ typedef u16 ScreenBlock[1024];
 
 #define Mem_VRam ((vu16*)0x06000000)
 #define Mem_VRamTile4 ((vu16*)0x06010000)
+#define se_mem          ((SCREENBLOCK*)MEM_VRAM)
 #define Mem_Tile ((TileBlock*)Mem_VRam)
 #define PaletteMem ((u16*)0x05000200)
 #define BGPaletteMem ((u16*)0x05000000)

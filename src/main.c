@@ -31,17 +31,17 @@
 #include "numbers_bin.h"
 #include "background.h"
 #include "bullet_bin.h"
-#include "playerpallete_bin.h"
-#include "enemypallete_bin.h"
 #include "font_bin.h"
 #include "exsplosion_bin.h"
 #include "underline_bin.h"
 
 
-#include "background.h"
+#include "clouds_bin.h"
 
 
-
+#include "playerpallete_bin.h"
+#include "enemypallete_bin.h"
+#include "backgroundpallete_bin.h"
 
 u8 level;//this makes the enemy more likely to shoot
 u16 score;
@@ -110,7 +110,7 @@ int main(){
 	
     tonccpy(Mem_Obj_Palette,playerpallete_bin,playerpallete_bin_size);
 	tonccpy(Mem_Obj_Palette+16,enemypallete_bin,enemypallete_bin_size);
-	tonccpy(BGPaletteMem,bgPal,bgPalLen);
+
     //tonccpy(Mem_Obj_Palette[16],enemyPal,enemyPalLen);
     
     tonccpy(&Mem_Tile[4][4],bullet_bin,bullet_bin_size);
@@ -126,6 +126,7 @@ int main(){
 
 	initbackground();
 	
+	loadbackground(); 
 	
 	//done with hardwareinit
 

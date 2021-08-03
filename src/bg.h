@@ -4,5 +4,7 @@
 
 #include <tonc_types.h>
 void initbackground();
+void loadbackground();
 void scrollbackground();
-#endif /* bg_h */
+
+#endif

@@ -1,5 +1,10 @@
 #include "bg.h"
 #include <tonc_memmap.h>
+#include <tonc_core.h>
+#include "clouds_bin.h"
+#include "cloudmap_bin.h"
+#include "backgroundpallete_bin.h"
+#include "defs.h"
 
 void initbackground(){
     //REG_BGxCNT
@@ -16,6 +21,13 @@ void initbackground(){
     REG_BG3HOFS=0;
 }
 
+void loadbackground(){
+    tonccpy(BGPaletteMem,backgroundpallete_bin,backgroundpallete_bin_size);
+    
+    tonccpy(&Mem_Tile[1][0],clouds_bin,clouds_bin_size);
+    
+    //tonccpy(&se_mem[30][0],cloudmap_bin,cloudmap_bin_size);
+}
 u32 scroll=0;
 void scrollbackground(){
     ++scroll;

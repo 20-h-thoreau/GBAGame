@@ -14,8 +14,22 @@ superfamiconv tiles -i sprites/exsplosion.png  -B 4 -D -p data/playerpallete.bin
 superfamiconv tiles -i sprites/font.png -B 4 -D -p data/playerpallete.bin -M gba -H 8 -W 8 -F -d data/font.bin -v
 superfamiconv tiles -i sprites/numbers.png -B 4 -D -p data/playerpallete.bin -M gba -H 8 -W 8 -F -d data/numbers.bin -v
 
-#music
 
+#background
+superfamiconv palette -i background/backgroundpallete.png -M gba  -0 76dde8 -d data/backgroundpallete.bin -v
+
+superfamiconv tiles -i background/clouds.png -M gba -B 4 -W8 -H 8 -F -p data/backgroundpallete.bin -d data/clouds.bin -v
+
+superfamiconv map -i background/clouds.png -M gba -B 4 -W 8 -H 8 -p data/backgroundpallete.bin -t data/clouds.bin --map-width 32 --map-height 64 -d data/cloudmap.bin -v
+
+
+superfamiconv tiles -i background/islands.png -M gba -B 4 -W8 -H 8 -F -p data/backgroundpallete.bin -d data/islands.bin -v
+
+superfamiconv map -i background/islands.png -M gba -B 4 -W 8 -H 8 -p data/backgroundpallete.bin -t data/islands.bin --map-width 32 --map-height 64 -d data/islandmap.bin -v
+
+#
+
+#music
 
 sox music/skytheme.wav -b 8  build/skytheme-build.wav Channels 1 rate 18157
 sox build/skytheme-build.wav -e signed build/skytheme.raw
