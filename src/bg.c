@@ -11,9 +11,9 @@ void initbackground(){
     //REG_BGxHOFS
     //REG_BGxVOFS
     REG_BG0CNT=0b1000000000000000;
-    REG_BG1CNT=0b1000000000000001; //islands
-    REG_BG2CNT=0b1000000000000010; //clouds
-    REG_BG3CNT=0b0000000000000011; //title screen goes here
+    REG_BG1CNT=0b1000000100000101; //islands
+    REG_BG2CNT=0b1000001000001010; //clouds
+    REG_BG3CNT=0b0000001100001111; //title screen goes here
     
     REG_BG0HOFS=0;
     REG_BG1HOFS=0;

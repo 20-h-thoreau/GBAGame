@@ -52,7 +52,7 @@ void gameoverscreen(void){
     bool pressstart=false;
 
     char GameOver[]="GAME OVER";
-    char message[11]="PRESS START";
+    char message[]="PRESS START";
 
     
     u8 leters[3];
@@ -78,7 +78,7 @@ void gameoverscreen(void){
             pressstart=(!pressstart); //this flickers the press start text
         }
         if (pressstart==true){
-            displaytext(message, 10, 10, 130,130,01);
+            displaytext(message, 11, 10, 130,130,01);
         }
         qran_range(0,0xffff);
         

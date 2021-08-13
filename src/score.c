@@ -86,9 +86,9 @@ void addtoleaderboard(char l1, char l2,char l3){ //might want to check that boar
 }
 
 void addunderline(u8 leterpointer){
-    Obj_Attributes[21*4]=0b0000000000000000+ (scorestartingy+(12*boardpos)+2);
-    Obj_Attributes[21*4+1]=0b0000000000000000+(scorestartingx+(8*leterpointer));
-    Obj_Attributes[21*4+2]=0b0000000000000000+(62+(1<<0xc));
+    Obj_Attributes[(scorestartingsprite-1)*4]=0b0000000000000000+ (scorestartingy+(12*boardpos)+2);
+    Obj_Attributes[(scorestartingsprite-1)*4+1]=0b0000000000000000+(scorestartingx+(8*leterpointer));
+    Obj_Attributes[(scorestartingsprite-1)*4+2]=0b0000000000000000+(62+(1<<0xc));
    
 }
 //21 is sprite
