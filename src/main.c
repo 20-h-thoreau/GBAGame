@@ -44,7 +44,7 @@
 #include "enemypallete_bin.h"
 #include "backgroundpallete_bin.h"
 
-u8 level;//this makes the enemy more likely to shoot
+u8 level;//this makes the enemy more likely to shoot, maybe
 u16 score;
 //sprite position functions
 	   
@@ -97,7 +97,7 @@ int main(){
 	
 	
 	OAM_CLEAR();
-    DisplayController=0x1000;
+    DisplayController=0x1f00;
     tonccpy(&Mem_Tile[4][1],ship_bin,ship_bin_size);
 	tonccpy(&Mem_Tile[4][0x41],shipprop_bin,shipprop_bin_size);
 	
@@ -197,11 +197,6 @@ int main(){
 		Bullet.BulletSpeed=0x301;
 		Bullet.angle=0;
 		*/
-
-
-		eb0.ally=false;
-        
-
         
         for (u8 i=0; i<shipcount; ++i){
             for (u8 n=0; n<4; ++n){

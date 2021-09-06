@@ -7,7 +7,9 @@
 #include "defs.h"
 
 void subtitlecloud1();
-const int cloud1[4][5]={{1,2,3,4,5},{6,7,7,8,9},{10,11,12,13,14},{0,0,0,0,0}};
+const int blank[4][5]={{0,0,0,0,0},{0,0,0,0,0},{0,0,0,0,0},{0,0,0,0,0}}
+const int cloud0[4][5]={{1,2,3,4,5},{6,7,7,8,9},{10,11,12,13,14},{0,0,0,0,0}};
+const int *tiles[2]={&blank,&cloud0}
 
 void initbackground(){
     //REG_BGxCNT
