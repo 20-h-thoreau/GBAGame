@@ -50,7 +50,7 @@ void scrollbackground(){
     ++scroll;
     REG_BG0VOFS=(scroll>>1)&0x1ff;
     REG_BG1VOFS=scroll;
-    REG_BG2VOFS=(scroll<<1)&0x1ff;
+    REG_BG2VOFS=(scroll>>2)&0x1ff;
     
 }
 

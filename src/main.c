@@ -9,7 +9,8 @@
 
  u8 const ScreenWidth=240;
  u8 const ScreenHieght=160;//these were orginally u8 constances
-
+ const struct Ship *shipptr[4];//these break everything if put into defs
+ u8 shipcount;
 
 #include <tonc_oam.h>
 #include <tonc_core.h>
@@ -72,14 +73,6 @@ u32 xyout; //this is jsut used to get x y out of functions where it is stored to
 u8 exsplosion=0;
 
 int main(){
-	//testing saveing
-
-	
-	
-	
-	
-	
-	
 	u16 bulletwaittimer=0;
 	bool openfire=false;
 	u8 level=startinglevel;
@@ -132,11 +125,31 @@ int main(){
 
 	
 
-	
+    shipcount=2;
 	struct Ship Player;
+    shipptr[0]=&Player;
 	struct Ship Enemy;
-	struct BulletAttribute Bullet;
-	struct BulletAttribute Bullet1;
+    shipptr[1]=&Enemy;
+    
+	volatile struct BulletAttribute ab0;
+    Player.bullet[0]=&ab0;
+    volatile struct BulletAttribute ab1;
+    Player.bullet[1]=&ab1;
+    volatile struct BulletAttribute ab2;
+    Player.bullet[2]=&ab2;
+    volatile struct BulletAttribute ab3;
+    Player.bullet[3]=&ab3;
+ 
+    
+    
+    volatile struct BulletAttribute eb0;
+    Enemy.bullet[0]=&eb0;
+    volatile struct BulletAttribute eb1;
+    Enemy.bullet[1]=&eb1;
+    volatile struct BulletAttribute eb2;
+    Enemy.bullet[2]=&eb2;
+    volatile struct BulletAttribute eb3;
+    Enemy.bullet[3]=&eb3;
 	
 	startscreen();
 	
@@ -155,6 +168,8 @@ int main(){
 		Player.bulletactive=0x00;
 		Player.ally=true;
 		Player.hit=false;
+        Player.bulletcount=0;
+        Player.bulletcooldown=0;
 		
 		
 		
@@ -171,23 +186,25 @@ int main(){
 		Enemy.bulletactive=0x00;
 		Enemy.ally=false;
 		Enemy.hit=false;
+        Enemy.bulletcount=0;
+        Player.bulletcooldown=0;
 		
-
+/*
 		Bullet.ally=true;
 		Bullet.x=Player.x;
 		Bullet.y=250<<8;
 		Bullet.BulletTimer=0;
 		Bullet.BulletSpeed=0x301;
 		Bullet.angle=0;
-		
+		*/
 
 
-		Bullet1.ally=false;
-		Bullet1.x=Enemy.x;
-		Bullet1.y=250<<8;
-		Bullet1.BulletTimer=0;
-		Bullet1.BulletSpeed=0x301;
-		Bullet1.angle=0;
+		eb0.ally=false;
+		eb0.x=Enemy.x;
+		eb0.y=250<<8;
+		eb0.BulletTimer=0;
+		eb0.BulletSpeed=0x301;
+		eb0.angle=0;
 
 		bulletwaittimer=0;
 		openfire=false;
@@ -240,18 +257,7 @@ int main(){
 			
 			
 			
-			if ((Player.bulletactive &0x80) !=0){
-				xyout=anglespeed(Bullet.angle, Bullet.BulletSpeed, Bullet.x, Bullet.y);
-				Bullet.x=(xyout>>16);
-				Bullet.y=(xyout&0xffff);
-				Bullet.BulletTimer=((Bullet.BulletTimer+1)&0x3f);
-			}
-			
-			if (Bullet.BulletTimer==0){
-				Bullet.y=250<<8;
-				Player.bulletactive=Player.bulletactive&0x7f;
-				
-			}
+
 			
 			
 			
@@ -296,24 +302,13 @@ int main(){
 
 					
 				
-				if ((Enemy.bulletactive &0x80) !=0){
-					xyout=anglespeed(Bullet1.angle, Bullet1.BulletSpeed, Bullet1.x, Bullet1.y);
-					Bullet1.x=(xyout>>16);
-					Bullet1.y=(xyout&0xffff);
-					Bullet1.BulletTimer=((Bullet.BulletTimer+1)&0x3f);
-				}
-				
-				if (Bullet1.BulletTimer==0){
-					Bullet1.y=250<<8;//not sure this is nessisary
-					Enemy.bulletactive=Enemy.bulletactive&0x7f;
-					
-				}
+
 					
 				
 				
 				
 				
-				if ( (((ABS(Bullet.x-Enemy.x))<0x600  && (ABS(Bullet.y-Enemy.y))<0x600  )) && Player.bulletactive!=0){
+				if ( (((ABS(ab0.x-Enemy.x))<0x600  && (ABS(ab0.y-Enemy.y))<0x600  )) && ab0.active){
 					Enemy.hit=true;
 					Enemy.button=0xffff;
 					Enemy.bulletactive=0;
@@ -350,7 +345,7 @@ int main(){
 			
 
 			
-				if ( (((ABS(Bullet1.x-Player.x))<0x400  && (ABS(Bullet1.y-Player.y))<0x400  )) && Enemy.bulletactive!=0){
+				if ( (((ABS(eb0.x-Player.x))<0x400  && (ABS(eb0.y-Player.y))<0x400  )) && Enemy.bulletactive!=0){
 					Player.hit=true;
 					gameover=true;
 				}
@@ -409,36 +404,56 @@ int main(){
 				createbullet(x,y,255,0,true); //this creates a jet stream
 			}
 			 */
-			if (!(Player.button & 1<<1) && (Player.turntimer&0x03)==0 && openfire){//1=b
-				Bullet.x=Player.x;
-				Bullet.y=Player.y;
-				Bullet.angle=Player.angle;
-				Bullet.BulletTimer=0;
-				
-				createbullet(Player.x,Player.y,1,Player.angle,Player.ally);
-				Player.bulletactive=Player.bulletactive | 0x80;
-				}
-			
-			else {
-				if ((Player.bulletactive&0x80)!=0){
-				createbullet(Bullet.x,Bullet.y,1,Bullet.angle,true);
-				}
-			}
-			
-			if ((Enemy.button & 1<<1) && (Enemy.turntimer&0x03)==0 && openfire && Enemy.hit==false) {
-				Bullet1.x=Enemy.x;
-				Bullet1.y=Enemy.y;
-				Bullet1.angle=Enemy.angle;
-				Bullet1.BulletTimer=0;
-				
-				createbullet(Enemy.x,Enemy.y,9,Enemy.angle,Enemy.ally);
-				Enemy.bulletactive=Enemy.bulletactive | 0x80;
-			}
-			else{
-				if ((Enemy.bulletactive&0x80)!=0){
-				createbullet(Bullet1.x,Bullet1.y,9,Bullet1.angle,false);
-				}
-			}
+            
+            //replace this with a struct pointer to ship struct for player then for enemy??
+            for(u8 i=0; i<shipcount; ++i){
+                struct Ship *ptr=shipptr[i];
+                if (!(ptr->button & 1<<1) && (ptr->turntimer&0x03)==0 && openfire && ptr->bulletcooldown==0){//1=b
+                    //creatr bullet
+                    ptr->bullet[ptr->bulletcount&0x03]->x=ptr->x;
+                    ptr->bullet[ptr->bulletcount&0x03]->y=ptr->y;
+                    ptr->bullet[ptr->bulletcount&0x03]->angle=ptr->angle;
+                    ptr->bullet[ptr->bulletcount&0x03]->BulletTimer=0x28;
+                    ptr->bullet[ptr->bulletcount&0x03]->active=true;
+                    ptr->bullet[ptr->bulletcount&0x03]->BulletSpeed=0x301;
+                    ++ptr->bulletcount;
+                    
+                    ptr->bulletactive=ptr->bulletactive | 0x80;
+                    ptr->bulletcooldown=0x10;
+                }
+                else if(ptr->bulletcooldown!=0){
+                    --ptr->bulletcooldown;
+                }
+                
+                /*else {
+                    if ((Player.bulletactive&0x80)!=0){
+                    createbullet(ptr->bullet[ptr->bulletcount&0x03]->x,ptr->bullet[ptr->bulletcount&0x03]->y,1,ptr->bullet[ptr->bulletcount&0x03]->angle,ptr->ally);
+                    }
+                 */
+                for (u8 n=0; n<4;++n){
+                    if (ptr->bullet[n]->active){
+                        if (ptr->bullet[n]->BulletTimer!=0){
+                            xyout=anglespeed(ptr->bullet[n]->angle, ptr->bullet[n]->BulletSpeed, ptr->bullet[n]->x, ptr->bullet[n]->y);
+                            ptr->bullet[n]->x=(xyout>>16);
+                            ptr->bullet[n]->y=(xyout&0xffff);
+                            --ptr->bullet[n]->BulletTimer;
+                            
+                            createbullet(ptr->bullet[n]->x,ptr->bullet[n]->y,(i*8)+(n)+1,ptr->bullet[n]->angle,ptr->ally);
+                        }
+                        else{
+                            ptr->bullet[n]->y=250<<8;
+                            ptr->bullet[n]->active=false;
+                        }
+                    }
+                }
+                
+            }
+            
+            
+		
+            
+            
+            
 			displayscore();
 			
 			

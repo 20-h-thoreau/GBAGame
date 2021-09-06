@@ -69,8 +69,14 @@ typedef struct BulletAttribute{
     u8 BulletTimer; //bullets disapear after some number of frames.
     u16 BulletSpeed;  //could be lower, well see
     u8 angle;
+    bool active
+    
     
 } __attribute__((packed, aligned(4))) BulletAttributes;
+
+
+
+
 
 
 typedef struct Ship{
@@ -86,6 +92,9 @@ typedef struct Ship{
     u16 maxspeed;
     u16 minspeed;
     u8 bulletactive;
+    u8 bulletcooldown;
+    struct BulletAttribute *bullet[4];
+    u8 bulletcount;
     bool ally;
     bool hit;
 } __attribute__((packed, aligned(4))) Ship;
