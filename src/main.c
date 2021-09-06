@@ -200,12 +200,18 @@ int main(){
 
 
 		eb0.ally=false;
-		eb0.x=Enemy.x;
-		eb0.y=250<<8;
-		eb0.BulletTimer=0;
-		eb0.BulletSpeed=0x301;
-		eb0.angle=0;
+        
 
+        
+        for (u8 i=0; i<shipcount; ++i){
+            for (u8 n=0; n<4; ++n){
+                shipptr[i]->bullet[n]->BulletTimer=0;
+                shipptr[i]->bullet[n]->y=250<<8;
+                shipptr[i]->bullet[n]->ally=shipptr[i]->ally;
+            }
+        }
+        
+        
 		bulletwaittimer=0;
 		openfire=false;
 		gameover=false;
@@ -413,13 +419,13 @@ int main(){
                     ptr->bullet[ptr->bulletcount&0x03]->x=ptr->x;
                     ptr->bullet[ptr->bulletcount&0x03]->y=ptr->y;
                     ptr->bullet[ptr->bulletcount&0x03]->angle=ptr->angle;
-                    ptr->bullet[ptr->bulletcount&0x03]->BulletTimer=0x28;
+                    ptr->bullet[ptr->bulletcount&0x03]->BulletTimer=0x3f;
                     ptr->bullet[ptr->bulletcount&0x03]->active=true;
                     ptr->bullet[ptr->bulletcount&0x03]->BulletSpeed=0x301;
                     ++ptr->bulletcount;
                     
                     ptr->bulletactive=ptr->bulletactive | 0x80;
-                    ptr->bulletcooldown=0x10;
+                    ptr->bulletcooldown=0x15;
                 }
                 else if(ptr->bulletcooldown!=0){
                     --ptr->bulletcooldown;
