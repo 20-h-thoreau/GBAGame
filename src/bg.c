@@ -10,16 +10,17 @@
 #define mapxlen (0x20/metatilexlen)
 #define mapylen (0x40/metatileylen)
 
-void subtitlecloud1();
+
+u32 scroll;
 const u16 blank[metatileylen][metatilexlen]={{0,0,0,0},{0,0,0,0},{0,0,0,0},{0,0,0,0}};
 const u16 cloud0[metatileylen][metatilexlen]={{1,2,3,4},{6,7,7,8},{10,11,12,13},{0,0,0,0}};
 const u16 *tiles[2]={&blank,&cloud0};
 const u16 bg2map[mapylen][mapxlen]={{1,0,1,0,1,0,1,0},{1,0,1,0,1,0,1,0},{1,0,1,0,1,0,1,0},{1,0,1,0,1,0,1,0},{1,0,1,0,1,0,1,0},{1,0,1,0,1,0,1,0},{1,0,1,0,1,0,1,0},{1,0,1,0,1,0,1,0},{1,0,1,0,1,0,1,0},{1,0,1,0,1,0,1,0},{1,0,1,0,1,0,1,0},{1,0,1,0,1,0,1,0},{1,0,1,0,1,0,1,0},{1,0,1,0,1,0,1,0},{1,0,1,0,1,0,1,0},{1,0,1,0,1,0,1,0}};
 //4x4, meta tiles wide. 10 tall, set these correct after while
 
-void loadtile(u16 *mapptr, u16 metatilex, u16 metatiley, u16 tile);
-u32 scroll;
+
 void initbackground(){
+
     //REG_BGxCNT
     //REG_BGxHOFS
     //REG_BGxVOFS
