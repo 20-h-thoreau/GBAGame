@@ -15,8 +15,7 @@ void deathanimation(bool playerhit, bool enemyhit,u16 playerx, u16 playery, u8 p
             timer=0;
             ++animationcounter;
         }
-        vsync();
-        vblank();
+        VBlankIntrWait();
         
         if (playerhit==false){
             createship(playerx,playery,0,playerangle,true);
@@ -64,8 +63,7 @@ void gameoverscreen(void){
         
     while (startpressed==false){
         
-        vsync();
-        vblank();
+        VBlankIntrWait();
         
         displayscoreboard();
         displaytext(GameOver, 9, 0, 80,32,01);

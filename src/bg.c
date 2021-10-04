@@ -77,7 +77,7 @@ void loadtile(u16 *mapptr, u16 metatilex, u16 metatiley, u16 tile){
 //0 3e=x
 //0x40==y
 
-void scrollbackground(){
+void __attribute__((target("arm"),section(".iwram"),noinline))  scrollbackground(){
     ++scroll;
     REG_BG0VOFS=(scroll>>1)&0x1ff;
     REG_BG1VOFS=scroll;

@@ -89,11 +89,10 @@ int main(){
 
 	
 	initmusicregisters();
-    vsync();
-	vblank();
-	
-	
 	OAM_CLEAR();
+	
+	
+	
     DisplayController=0x1f00;
     tonccpy(&Mem_Tile[4][1],ship_bin,ship_bin_size);
 	tonccpy(&Mem_Tile[4][0x41],shipprop_bin,shipprop_bin_size);
@@ -148,6 +147,7 @@ int main(){
     volatile struct BulletAttribute eb3;
     Enemy.bullet[3]=&eb3;
 	
+	initinterrupthandler();
 	startscreen();
 	
 	while (1){
@@ -209,7 +209,7 @@ int main(){
 		gameover=false;
 		exsplosion=0;
 		score=0;
-		
+		VBlankIntrWait();
 		while(!gameover){
 			++Player.turntimer;
 			++Enemy.turntimer;
@@ -352,8 +352,7 @@ int main(){
 			
 
 			
-			vsync();
-			vblank();
+			VBlankIntrWait();
 			int directionadder=0;
 			switch (Player.turntimer&0x4){
 				case 0x00:
@@ -492,8 +491,7 @@ void startscreen(void){
 
 	
 	while (startpressed==false){
-		vsync();
-		vblank();
+		VBlankIntrWait();
 		if ((timer&0x1f)==0){
 			pressstart=(!pressstart); //this flickers the press start text
 		}

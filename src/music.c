@@ -47,7 +47,7 @@ void initmusicregisters(){
 
 }
 
-void switchoutdma(){
+void __attribute__((target("arm"),section(".iwram"),noinline)) switchoutdma(){
     if (BufferAttributes.currentbuffer==1){
         REG_DMA1CNT_H = 0;
         REG_DMA1SAD = (u32)&Buffer.buffer0[0];
@@ -59,7 +59,7 @@ void switchoutdma(){
     }
 }
 
-void fillbuffer(){
+void __attribute__((target("arm"),section(".iwram"),noinline)) fillbuffer(){
     if (BufferAttributes.currentbuffer==1){
         for (u32 i=0; i<buffersize; ++i){
             Buffer.buffer0[i]=skytheme[++SongData.Position];
