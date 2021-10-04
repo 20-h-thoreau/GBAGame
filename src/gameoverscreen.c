@@ -16,10 +16,7 @@ void deathanimation(bool playerhit, bool enemyhit,u16 playerx, u16 playery, u8 p
             ++animationcounter;
         }
         vsync();
-        fillbuffer();
-        switchoutdma();
-        OAM_CLEAR();
-        scrollbackground();
+        vblank();
         
         if (playerhit==false){
             createship(playerx,playery,0,playerangle,true);
