@@ -68,10 +68,7 @@ void gameoverscreen(void){
     while (startpressed==false){
         
         vsync();
-        fillbuffer();
-        switchoutdma();
-        OAM_CLEAR();
-        scrollbackground();
+        vblank();
         
         displayscoreboard();
         displaytext(GameOver, 9, 0, 80,32,01);

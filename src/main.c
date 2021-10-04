@@ -25,7 +25,7 @@
 #include "music.h"
 #include "score.h"
 #include "bg.h"
-//#include "interupts.h" we will work on this later.
+#include "interrupts.h"
 
 #include "ship_bin.h"
 #include "shipprop_bin.h"
@@ -88,12 +88,9 @@ int main(){
 	}
 
 	
-	
-    vsync();
-	fillbuffer();
-	switchoutdma();
 	initmusicregisters();
-	scrollbackground();
+    vsync();
+	vblank();
 	
 	
 	OAM_CLEAR();
@@ -356,11 +353,7 @@ int main(){
 
 			
 			vsync();
-			fillbuffer();
-			switchoutdma();
-			OAM_CLEAR();
-			scrollbackground();
-
+			vblank();
 			int directionadder=0;
 			switch (Player.turntimer&0x4){
 				case 0x00:
@@ -500,10 +493,7 @@ void startscreen(void){
 	
 	while (startpressed==false){
 		vsync();
-		fillbuffer();
-		switchoutdma();
-		OAM_CLEAR();
-		scrollbackground();
+		vblank();
 		if ((timer&0x1f)==0){
 			pressstart=(!pressstart); //this flickers the press start text
 		}
