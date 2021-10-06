@@ -44,16 +44,23 @@ void initleaderboard(){
 
 }
 void leaderboardpreset(){
-    leaderboard.name[0][0]='Z';
-    leaderboard.name[0][1]='A';
-    leaderboard.name[0][2]='K';
-    leaderboard.score[0]=3;
     
-    leaderboard.name[1][0]='K';
-    leaderboard.name[1][1]='T';
-    leaderboard.name[1][2]='Y';
-    leaderboard.score[1]=2;
     
+    leaderboard.name[0][0]='H';
+    leaderboard.name[0][1]='R';
+    leaderboard.name[0][2]='R';
+    leaderboard.score[0]=10;
+    
+    leaderboard.name[1][0]='Z';
+    leaderboard.name[1][1]='A';
+    leaderboard.name[1][2]='K';
+    leaderboard.score[1]=5;
+    
+    
+    leaderboard.name[2][0]='K';
+    leaderboard.name[2][1]='T';
+    leaderboard.name[2][2]='Y';
+    leaderboard.score[2]=3;
 }
 #define scorestartingx 80
 #define scorestartingy 56

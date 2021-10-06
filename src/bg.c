@@ -12,6 +12,7 @@
 
 
 u32 scroll;
+u32 time;
 const u16 blank[metatileylen][metatilexlen]={{0,0,0,0},{0,0,0,0},{0,0,0,0},{0,0,0,0}};
 const u16 cloud0[metatileylen][metatilexlen]={{1,2,3,4},{6,7,7,8},{10,11,12,13},{0,0,0,0}};
 const u16 *tiles[2]={&blank,&cloud0};
@@ -86,3 +87,6 @@ void __attribute__((target("arm"),section(".iwram"),noinline))  scrollbackground
 }
 
 
+void __attribute__((target("arm"),section(".iwram"),noinline))  changetime(){
+    ++time;
+}
